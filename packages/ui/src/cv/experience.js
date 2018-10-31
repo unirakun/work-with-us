@@ -49,7 +49,7 @@ const Experience = (props) => {
       </h2>
       <ul>
         {informations.map(information => (
-          <li dangerouslySetInnerHTML={{ __html: information.replace(/\n/g, '<br />')}} />
+          <li key={information} dangerouslySetInnerHTML={{ __html: information.replace(/\n/g, '<br />')}} />
         ))}
       </ul>
     </div>

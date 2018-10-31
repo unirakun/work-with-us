@@ -8,10 +8,12 @@ const Label = styled.label`
   text-transform: capitalize;
 `
 
-export default styled.div.attrs({
-  children: ({ name, ratings }) => [
-    <Label>{name}</Label>,
-    ratings.map(rating => <Rating>{rating}</Rating>)
-  ],
-})`
+const RatingsGroup = ({ className, name, ratings }) => (
+  <div className={className}>
+    <Label>{name}</Label>
+    {ratings.map(rating => <Rating key={rating[0]}>{rating}</Rating>)}
+  </div>
+)
+
+export default styled(RatingsGroup)`
 `
