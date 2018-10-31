@@ -1,0 +1,8 @@
+export { default as Avatar } from './avatar'
+export { default as Contact } from './contact'
+export { default as Social } from './social'
+export { default as Age } from './age'
+export { default as Background } from './background'
+export { default as Stars } from './stars'
+export { default as Rating } from './rating'
+export { default as RatingsGroup } from './ratingsGroup'
