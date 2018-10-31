@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Background } from '../components'
 import Who from './who'
-import Experience from './experience'
+import Experiences from './experiences'
 import Skills from './skills'
 
 const testProps = {
@@ -122,9 +122,9 @@ const CV = ({ className }) => {
         {skills}
       </Skills>
 
-      <div className="experiences" style={{ gridArea: 'experiences' }}>
-        {experiences.map(experience => <Experience key={experience.title} {...experience} />)}
-      </div>
+      <Experiences>
+        {experiences}
+      </Experiences>
     </div>
   )
 }
