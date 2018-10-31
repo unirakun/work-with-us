@@ -21,6 +21,6 @@ const Rating = ({ className, children = [] }) => {
 export default styled(Rating)`
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   width: 12em;
 `

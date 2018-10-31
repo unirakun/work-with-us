@@ -56,4 +56,6 @@ const Experience = (props) => {
   )
 }
 
-export default Experience
+export default styled(Experience)`
+  padding: 1em;
+`

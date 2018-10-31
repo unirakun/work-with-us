@@ -1,8 +1,10 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Contact, Avatar, Social, Age, Background } from 'components'
 
 const Who = (props) => {
   const {
+    className,
     name,
     avatar,
     what,
@@ -24,7 +26,7 @@ const Who = (props) => {
   } = socials
 
   return (
-    <Background>
+    <Background className={className}>
       <Avatar src={avatar} />
 
       <div className="description">
@@ -51,4 +53,6 @@ const Who = (props) => {
   )
 }
 
-export default Who
+export default styled(Who)`
+  grid-area: who;
+`

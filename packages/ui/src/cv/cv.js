@@ -96,7 +96,13 @@ const testProps = {
   ]
 }
 
-const CV = (props) => {
+const Description = styled(Background).attrs({
+  secondary: true,
+})`
+  grid-area: description;
+`
+
+const CV = ({ className }) => {
   const {
     who,
     description,
@@ -105,20 +111,29 @@ const CV = (props) => {
   } = testProps
 
   return (
-    <div>
+    <div className={className}>
       <Who {...who} />
 
-      <Background secondary>
+      <Description>
         {description}
-      </Background>
+      </Description>
 
-      <Skills data={skills} />
+      <Skills>
+        {skills}
+      </Skills>
 
-      <div className="experiences">
+      <div className="experiences" style={{ gridArea: 'experiences' }}>
         {experiences.map(experience => <Experience key={experience.title} {...experience} />)}
       </div>
     </div>
   )
 }
 
-export default styled(CV)``
+export default styled(CV)`
+  display: grid;
+  grid-template-columns: auto 15em;
+  grid-template-areas:
+    "who who"
+    "description description"
+    "experiences skills";
+`
