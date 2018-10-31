@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { CompagnyLogo } from '../components'
+import { CompagnyLogo } from '../../components'
 
 const Title = styled.h1`
   display: flex;
