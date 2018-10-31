@@ -1,6 +1,6 @@
 import React from 'react'
-import Proposals from './proposals'
-import AddNewProposal from './addNewProposal'
+// import Proposals from './proposals'
+// import AddNewProposal from './addNewProposal'
 import CV from './cv'
 
 const App = () => (

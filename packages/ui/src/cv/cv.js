@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Background } from 'components'
+import { Background } from '../components'
 import Who from './who'
 import Experience from './experience'
 import Skills from './skills'

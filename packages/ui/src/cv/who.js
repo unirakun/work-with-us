@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Contact, Avatar, Social, Age, Background } from 'components'
+import { Contact, Avatar, Social, Age, Background } from '../components'
 
 const Who = (props) => {
   const {

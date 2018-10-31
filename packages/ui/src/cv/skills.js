@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { RatingsGroup } from 'components'
+import { RatingsGroup } from '../components'
 
 const Skills = ({ className, children }) => (
   <div className={className}>
