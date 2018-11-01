@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { CompagnyLogo } from '../../components'
 
@@ -23,7 +23,7 @@ const Experience = (props) => {
     title,
     client,
     dates,
-    informations,
+    informations = [],
   } = props
 
   const {
@@ -35,13 +35,23 @@ const Experience = (props) => {
     <div className={className}>
       <Title>
         {title}
-        <CompagnyLogo src={client.logo} />
+        {client && <CompagnyLogo src={client.logo} />}
         <CompagnyLogo src={props.for.logo} />
       </Title>
       <h2>
-        {client.name}
-        {', pour le compte de '}
-        {props.for.name}
+      {/* || (props.for && props.for.name)} */}
+        {client && client.name ?
+          (
+            <Fragment>
+              {client.name}
+              {', pour le compte de '}
+              {props.for.name}
+            </Fragment>
+          )
+          : (
+            props.for && props.for.name
+          )
+        }
         {' • '}
         <Date>{from}</Date>
         {' ➤ '}

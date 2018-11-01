@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 // import Proposals from './proposals'
 // import AddNewProposal from './addNewProposal'
+import { cv } from '@work-with-us/data'
 import CV from './cv'
 
 const App = () => (
@@ -9,7 +10,9 @@ const App = () => (
   //   <Proposals />
   //   <AddNewProposal />
   // </div>
-  <CV />
+  <Fragment>
+    {cv.map(data => <CV key={data.who.name} {...data} />)}
+  </Fragment>
 )
 
 export default App

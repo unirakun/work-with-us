@@ -12,6 +12,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@work-with-us/data": "^1.0.0",
     "apollo-boost": "^0.1.18",
     "apollo-client": "^2.4.4",
     "dayjs": "^1.7.7",
