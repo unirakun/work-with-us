@@ -15,6 +15,7 @@ require('@babel/register')({
     '@babel/preset-react',
   ],
   plugins: [
+    '@babel/plugin-syntax-dynamic-import',
     [
       'babel-plugin-styled-components',
       {
