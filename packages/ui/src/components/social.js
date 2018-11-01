@@ -9,10 +9,15 @@ const StyledSocialLogo = styled(SocialLogo)`
   fill: ${({ theme }) => theme.primary.fg};
 `
 
-const Social = ({ children, href }) => (
-  <a href={children || href}>
+const Social = ({ className, children, href }) => (
+  <a
+    className={className}
+    href={children || href}
+  >
     <StyledSocialLogo icon={getSocial(children || href)} size={36} />
   </a>
 )
 
-export default Social
+export default styled(Social)`
+  display: block;
+`
