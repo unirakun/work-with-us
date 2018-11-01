@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { lifecycle } from 'recompact'
 import { Contact, Avatar, Social, Age, Background } from '../../components'
 
 const GridArea = styled.div`
@@ -25,6 +26,14 @@ const Socials = styled.div`
 const StyledAvatar = styled(Avatar)`
   justify-self: end;
   margin: 0 1em;
+`
+
+const Particles = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 `
 
 const Who = (props) => {
@@ -74,20 +83,64 @@ const Who = (props) => {
         <Social href={github} />
         <Social href={linkedin} />
       </GridArea>
+
+      <Particles id="particles-js" />
     </Background>
   )
 }
 
-export default styled(Who)`
+const StyledWho = styled(Who)`
   grid-area: who;
   padding-top: 2em;
   padding-bottom: 2em;
   display: grid;
   align-items: center;
+  position: relative;
   grid-template-columns: 1vw auto 1fr auto 3em 1vw;
   grid-template-areas:
     ". avatar . . socials ."
     ". avatar description contacts socials ."
     ". avatar age-experience contacts socials ."
     ". avatar . . socials .";
+
+  & > * {
+    z-index: 10;
+
+    &#particles-js {
+      z-index: 0;
+    }
+  }
 `
+
+export default lifecycle({
+  componentDidMount: async () => {
+    if (typeof window !== 'undefined') {
+      await import('particles.js')
+
+      window.particlesJS(
+        'particles-js',
+        {
+          retina_detect: true,
+          particles: {
+            size: {
+              value: 1,
+            },
+            opacity: {
+              value: 0.8,
+            },
+            number: {
+              value: 100,
+              density: {
+                enable: true,
+                value_area: 800,
+              },
+            },
+            line_linked: {
+              opacity: 0.5,
+            },
+          },
+        },
+      )
+    }
+  },
+})(StyledWho)

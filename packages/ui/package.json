@@ -20,11 +20,13 @@
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",
     "normalize.css": "^8.0.0",
+    "particles.js": "^2.0.0",
     "react": "^16.6.0",
     "react-apollo": "^2.2.4",
     "react-dom": "^16.6.0",
     "react-scripts": "2.0.5",
     "react-star-rating-component": "^1.4.1",
+    "recompact": "^3.4.0",
     "social-logos": "^2.0.0",
     "styled-components": "^4.0.3"
   },
