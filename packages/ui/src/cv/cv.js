@@ -41,14 +41,11 @@ const CV = (props) => {
 
 export default styled(CV)`
   display: grid;
-  max-width: 70em;
-  margin: 0 auto;
   background-color: #f3f3f3;
   color: #323232;
-  box-shadow: 0px 0px 20px -10px black;
-  grid-template-columns: auto 15em;
   grid-template-areas:
-    "who who"
-    "description description"
-    "experiences skills";
+    "who"
+    "description"
+    "skills"
+    "experiences";
 `

@@ -60,7 +60,7 @@ const Who = (props) => {
   } = socials
 
   return (
-    <Background className={className}>
+    <Background className={className} gradient>
       <GridArea name="avatar" as={StyledAvatar} src={avatar} />
 
       <GridArea name="description" as={Description}>

@@ -12,7 +12,7 @@ app.use(react)
 app.use(serve(staticPath))
 
 const port = 4000
-const host = 'localhost'
+const host = '::'
 
 app.listen(port, host, () => {
   console.log(`🚀 Server ready at http://${host}:${port}${graphql.graphqlPath}`)

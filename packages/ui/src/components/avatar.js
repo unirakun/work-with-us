@@ -4,6 +4,6 @@ export default styled.img`
   max-width: 10em;
   max-height: 10em;
   border-radius: 100%;
-  background-color: white;
+  background-color: ${({ theme }) => theme.light};
   box-shadow: 0px 0px 20px -10px black;
 `

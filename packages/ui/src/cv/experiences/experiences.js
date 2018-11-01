@@ -15,4 +15,6 @@ const Experiences = ({ className, children }) => (
 
 export default styled(Experiences)`
   grid-area: experiences;
+  max-width: 70em;
+  margin: 0 auto;
 `
