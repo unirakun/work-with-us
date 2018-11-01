@@ -10,16 +10,19 @@ const Skills = ({ className, children }) => (
 
 export default styled(Skills)`
   grid-area: skills;
-  background-color: #3e0065;
+  background-color: #0006;
   color: ${({ theme }) => theme.light};
-  padding: 1em;
+  padding: 2em 1em;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  margin: 0 -1em;
+  margin-bottom: -4em;
+  margin-top: 4em;
 
   ${RatingsGroup} {
     &:not(:first-child) {
-      margin-left: 1em;
+      margin-left: 2em;
     }
   }
 `

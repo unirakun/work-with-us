@@ -5,9 +5,7 @@ import Who from './who'
 import Experiences from './experiences'
 import Skills from './skills'
 
-const Description = styled(Background).attrs({
-  secondary: true,
-})`
+const Description = styled.div`
   grid-area: description;
 `
 
@@ -22,15 +20,17 @@ const CV = (props) => {
 
   return (
     <div className={className}>
-      <Who {...who} />
+      <Who {...who}>
+        <Skills>
+          {skills}
+        </Skills>
+      </Who>
 
-      <Description>
-        {description}
-      </Description>
-
-      <Skills>
-        {skills}
-      </Skills>
+      {/* TODO: move this
+            <Description>
+              {description}
+            </Description>
+      */}
 
       <Experiences>
         {experiences}
@@ -46,6 +46,5 @@ export default styled(CV)`
   grid-template-areas:
     "who"
     "description"
-    "skills"
     "experiences";
 `

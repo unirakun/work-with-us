@@ -39,6 +39,7 @@ const Particles = styled.div`
 const Who = (props) => {
   const {
     className,
+    children,
     name,
     avatar,
     what,
@@ -84,6 +85,8 @@ const Who = (props) => {
         <Social href={linkedin} />
       </GridArea>
 
+      {children}
+
       <Particles id="particles-js" />
     </Background>
   )
@@ -91,8 +94,8 @@ const Who = (props) => {
 
 const StyledWho = styled(Who)`
   grid-area: who;
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding-top: 4em;
+  padding-bottom: 4em;
   display: grid;
   align-items: center;
   position: relative;
@@ -101,7 +104,8 @@ const StyledWho = styled(Who)`
     ". avatar . . socials ."
     ". avatar description contacts socials ."
     ". avatar age-experience contacts socials ."
-    ". avatar . . socials .";
+    ". avatar . . socials ."
+    "skills skills skills skills skills skills";
 
   & > * {
     z-index: 10;

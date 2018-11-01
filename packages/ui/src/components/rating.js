@@ -23,4 +23,5 @@ export default styled(Rating)`
   align-items: center;
   justify-content: flex-end;
   width: 12em;
+  padding: .3em;
 `

@@ -10,7 +10,7 @@ const Label = styled.label`
 
 const RatingsGroup = ({ className, name, ratings }) => (
   <div className={className}>
-    <Label>{name}</Label>
+    {/* <Label>{name}</Label> */}
     {ratings.map(rating => <Rating key={rating[0]}>{rating}</Rating>)}
   </div>
 )
