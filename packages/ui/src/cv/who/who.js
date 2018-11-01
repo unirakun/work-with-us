@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { lifecycle } from 'recompact'
-import { Contact, Avatar, Social, Age, Background } from '../../components'
+import { Avatar, Social, Age, Background } from '../../components'
 
 const GridArea = styled.div`
   grid-area: ${({ name }) => name};
@@ -11,12 +11,6 @@ const Description = styled.div`
   & h1, & h2 {
     margin: 0;
   }
-`
-
-const Contacts = styled.div`
-  & > *:not(:first-child) {
-    margin-top: 1em;
-  };
 `
 
 const Socials = styled.div`
@@ -50,8 +44,6 @@ const Who = (props) => {
 
   const {
     socials,
-    email,
-    phone,
   } = informations
 
   const {
@@ -72,11 +64,6 @@ const Who = (props) => {
       <GridArea name="age-experience">
         <Age from={birthday} suffix=" ans - "/>
         <Age from={worksSince} suffix=" ans d'expérience" />
-      </GridArea>
-
-      <GridArea name="contacts" as={Contacts}>
-        <Contact>{email}</Contact>
-        <Contact>{phone.split('').reduce((phone, digit, index) => `${phone}${index % 2 || index === 0 ? '' : '.'}${digit}`, '')}</Contact>
       </GridArea>
 
       <GridArea name="socials" as={Socials}>
