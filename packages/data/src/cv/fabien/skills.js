@@ -1,7 +1,7 @@
 export default {
   langages: [
-    ['javascript', 5],
-    ['typescript', 3],
+    ['Javascript', 5],
+    ['Typescript', 3],
     ['Rust', 1],
   ],
   frontend: [
@@ -12,10 +12,14 @@ export default {
   ],
   backend: [
     ['NodeJS', 5],
-    ['Koa', 5],
-    ['Express', 5],
-    ['Socket.io', 5],
     ['GraphQL', 3],
+    ['Koa / Express', 5],
+    ['Socket.io', 5],
+  ],
+  tools: [
+    ['Webpack', 4],
+    ['Cypress', 3],
+    ['Jest', 3],
   ],
   database: [
     ['MongoDB', 3],

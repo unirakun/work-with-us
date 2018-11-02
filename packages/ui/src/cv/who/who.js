@@ -11,15 +11,18 @@ const Description = styled.div`
   & h1, & h2 {
     margin: 0;
   }
+
+  & > *:not(:first-child) {
+    margin-top: .5em;
+  }
 `
 
 const Socials = styled.div`
   justify-self: end;
-`
 
-const StyledAvatar = styled(Avatar)`
-  justify-self: end;
-  margin: 0 1em;
+  & > *:not(:first-child) {
+    margin-top: 1em;
+  }
 `
 
 const Particles = styled.div`
@@ -54,7 +57,7 @@ const Who = (props) => {
 
   return (
     <Background className={className} gradient>
-      <GridArea name="avatar" as={StyledAvatar} src={avatar} />
+      <GridArea name="avatar" as={Avatar} src={avatar} />
 
       <GridArea name="description" as={Description}>
         <h1>{name}</h1>
@@ -86,13 +89,18 @@ const StyledWho = styled(Who)`
   display: grid;
   align-items: center;
   position: relative;
-  grid-template-columns: 1vw auto 1fr auto 3em 1vw;
+  grid-template-columns: 1vw 10em auto 1fr auto 1vw;
   grid-template-areas:
-    ". avatar . . socials ."
-    ". avatar description contacts socials ."
-    ". avatar age-experience contacts socials ."
-    ". avatar . . socials ."
+    ". socials avatar . . ."
+    ". socials avatar description contacts ."
+    ". socials avatar age-experience contacts ."
+    ". socials avatar . . ."
     "skills skills skills skills skills skills";
+
+  & ${Avatar} {
+    justify-self: end;
+    margin: 0 3em;
+  }
 
   & > * {
     z-index: 10;
