@@ -9,7 +9,7 @@ import 'normalize.css'
 // const client = new ApolloClient({})
 
 const theme = {
-  dark: '#323232',
+  dark: '#484848',
   light: '#f3f3f3',
   primary: {
     bg: '#7901c3',
