@@ -3,10 +3,12 @@ export default {
   client: {
     name: 'Sparklane',
     logo: 'https://media.licdn.com/dms/image/C4E0BAQHxuT_y1kwNDw/company-logo_200_200/0?e=1548892800&v=beta&t=kcgutZxBjW17F1ekw7byXh2unkm0KqYm8SYdFY-5mPQ',
+    color: '#232323',
   },
   for: {
     name: 'alakarteio',
     logo: 'https://media.licdn.com/dms/image/C560BAQEb5nDLmo4aog/company-logo_200_200/0?e=1548892800&v=beta&t=83cmXBo9F9yGfKuw1FSh2D8onX4fKJZM2mxbMu17vXs',
+    color: 'white',
   },
   dates: {
     from: Date.UTC(2018, 1),
