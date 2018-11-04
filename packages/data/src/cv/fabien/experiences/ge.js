@@ -16,14 +16,16 @@ export default {
   },
   informations: [
     'Création d\'un front-end avec les technologies facebook pour une nouvelle application web de la branche "Money", solutions de financement pour les particuliers.',
-    `> Mise en place du socle technique.
-    > Mise en place du socle de tests.
-    > Mise en place de la CI/CD avec les technologies cloud.`,
-    `Technologies utilisées :
-    - ReactJS / Redux
-    - Webpack / Babel / ESLint
-    - Mocha / Chai / Sinon
-    - CircleCI / Github
-    - Docker`,
+    'Mise en place du socle technique',
+    'Mise en place du socle de tests',
+    'Mise en place de la CI/CD avec les technologies cloud',
+    'Technologies utilisées :',
+    [
+      'ReactJS / Redux',
+      'Webpack / Babel / ESLint',
+      'Mocha / Chai / Sinon',
+      'CircleCI / Github',
+      'Docker',
+    ],
   ],
 }
