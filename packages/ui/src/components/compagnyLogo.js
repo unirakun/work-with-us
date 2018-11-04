@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const CompagnyLogo = ({ className, src, color }) => (
+const CompagnyLogo = ({ className, src }) => (
   <div className={className}>
-    <img src={src} />
+    <img src={src} alt="compagny logo" />
   </div>
 )
 export default styled(CompagnyLogo)`

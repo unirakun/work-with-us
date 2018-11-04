@@ -20,8 +20,8 @@ const Date = ({ children }) => new Intl.DateTimeFormat(undefined, { year: "numer
 const List = styled(({ children = [], className }) => (
   <ul className={className}>
     {children.map((item) => {
-      if (Array.isArray(item)) return <List>{item}</List>
-      return <li dangerouslySetInnerHTML={{ __html: item.replace(/\n/g, '<br />')}} />
+      if (Array.isArray(item)) return <List key={item[0]}>{item}</List>
+      return <li key={item} dangerouslySetInnerHTML={{ __html: item.replace(/\n/g, '<br />')}} />
     })}
   </ul>
 ))``
@@ -41,7 +41,7 @@ const Experience = (props) => {
   } = dates
 
   return (
-    <div className={className}>
+    <a name={`${title}-${from}`} className={className}>
       <Title>
         {title}
       </Title>
@@ -70,7 +70,7 @@ const Experience = (props) => {
         <Date>{to}</Date>
       </h3>
       <List>{informations}</List>
-    </div>
+    </a>
   )
 }
 

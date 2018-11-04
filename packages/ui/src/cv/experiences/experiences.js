@@ -13,9 +13,11 @@ const Experiences = ({ className, children }) => (
         {children
           .filter((_, index) => index <= children.length / 2)
           .map(experience => (
-            <li>
-              {experience.title}
-              <div> {(experience.client || experience.for).name}</div>
+            <li key={`#${experience.title}-${experience.dates.from}`}>
+              <a href={`#${experience.title}-${experience.dates.from}`}>
+                {experience.title}
+                <div> {(experience.client || experience.for).name}</div>
+              </a>
             </li>
           ))
         }
@@ -25,9 +27,11 @@ const Experiences = ({ className, children }) => (
         {children
           .filter((_, index) => !(index <= children.length / 2))
           .map(experience => (
-            <li>
-              {experience.title}
-              <div> {(experience.client || experience.for).name}</div>
+            <li key={`#${experience.title}-${experience.dates.from}`}>
+              <a href={`#${experience.title}-${experience.dates.from}`}>
+                {experience.title}
+                <div> {(experience.client || experience.for).name}</div>
+              </a>
             </li>
           ))
         }
@@ -37,7 +41,7 @@ const Experiences = ({ className, children }) => (
 
     {children.map(experience => (
       <Experience
-        key={experience.title}
+        key={`#${experience.title}-${experience.dates.from}`}
         {...experience}
       />
     ))}
@@ -102,10 +106,21 @@ export default styled(Experiences)`
         padding: 1em;
         text-align: center;
 
-        & > div {
-          font-size: .8em;
-          color: #9a9a9a;
-          margin-top: 0.5em;
+        & > a {
+          color: inherit;
+          text-decoration: none;
+          transition: transform 500ms ease-in-out;
+          display: block;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+
+          & > div {
+            font-size: .8em;
+            color: #9a9a9a;
+            margin-top: 0.5em;
+          }
         }
       }
     }
