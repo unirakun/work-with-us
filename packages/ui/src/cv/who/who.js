@@ -89,17 +89,40 @@ const StyledWho = styled(Who)`
   display: grid;
   align-items: center;
   position: relative;
-  grid-template-columns: 1vw 10em auto 1fr auto 1vw;
-  grid-template-areas:
-    ". socials avatar . . ."
-    ". socials avatar description contacts ."
-    ". socials avatar age-experience contacts ."
-    ". socials avatar . . ."
-    "skills skills skills skills skills skills";
 
-  & ${Avatar} {
-    justify-self: end;
-    margin: 0 3em;
+  @media screen and (min-width: 850px) {
+    grid-template-columns: 1vw 10em auto 1fr auto 1vw;
+    grid-template-areas:
+      ". socials avatar . . ."
+      ". socials avatar description contacts ."
+      ". socials avatar age-experience contacts ."
+      ". socials avatar . . ."
+      "skills skills skills skills skills skills";
+
+    & ${Avatar} {
+      justify-self: end;
+      margin: 0 3em;
+    }
+  }
+
+  @media screen and (max-width: 850px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      ". socials avatar ."
+      "description description description description"
+      "age-experience age-experience age-experience age-experience"
+      "contacts contacts contacts contacts"
+      "skills skills skills skills";
+    text-align: center;
+
+    & ${Avatar} {
+      justify-self: end;
+      margin-left: 3em;
+    }
+
+    & ${Description} {
+      margin-top: 4em;
+    }
   }
 
   & > * {
