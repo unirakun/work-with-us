@@ -17,6 +17,15 @@ const Title = styled.h1`
 
 const Date = ({ children }) => new Intl.DateTimeFormat(undefined, { year: "numeric", month: "long" }).format(children)
 
+const List = ({ children }) => (
+  <ul>
+    {children.map((item) => {
+      if (Array.isArray(item)) return <List>{item}</List>
+      return <li dangerouslySetInnerHTML={{ __html: item.replace(/\n/g, '<br />')}} />
+    })}
+  </ul>
+)
+
 const Experience = (props) => {
   const {
     className,
@@ -57,11 +66,7 @@ const Experience = (props) => {
         {' ➤ '}
         <Date>{to}</Date>
       </h2>
-      <ul>
-        {informations.map(information => (
-          <li key={information} dangerouslySetInnerHTML={{ __html: information.replace(/\n/g, '<br />')}} />
-        ))}
-      </ul>
+      <List>{informations}</List>
     </div>
   )
 }
