@@ -113,6 +113,6 @@ export default styled(Experiences)`
 
   & > ${Experience} {
     max-width: 70em;
-    margin: 0 auto;
+    margin: 10em auto;
   }
 `

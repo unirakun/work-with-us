@@ -17,14 +17,14 @@ const Title = styled.h1`
 
 const Date = ({ children }) => new Intl.DateTimeFormat(undefined, { year: "numeric", month: "long" }).format(children)
 
-const List = ({ children }) => (
-  <ul>
+const List = styled(({ children = [], className }) => (
+  <ul className={className}>
     {children.map((item) => {
       if (Array.isArray(item)) return <List>{item}</List>
       return <li dangerouslySetInnerHTML={{ __html: item.replace(/\n/g, '<br />')}} />
     })}
   </ul>
-)
+))``
 
 const Experience = (props) => {
   const {
@@ -44,9 +44,11 @@ const Experience = (props) => {
     <div className={className}>
       <Title>
         {title}
+      </Title>
+      <div className="logos">
         {client && <CompagnyLogo {...client}  src={client.logo} />}
         <CompagnyLogo {...props.for} src={props.for.logo} />
-      </Title>
+      </div>
       <h2>
       {/* || (props.for && props.for.name)} */}
         {client && client.name ?
@@ -61,16 +63,72 @@ const Experience = (props) => {
             props.for && props.for.name
           )
         }
-        {' • '}
+      </h2>
+      <h3>
         <Date>{from}</Date>
         {' ➤ '}
         <Date>{to}</Date>
-      </h2>
+      </h3>
       <List>{informations}</List>
     </div>
   )
 }
 
 export default styled(Experience)`
-  padding: 1em;
+  padding: 0 4em;
+  display: grid;
+  grid-template:
+    "title logos"
+    "title for"
+    "title dates"
+    "informations informations";
+
+  & > ${List} {
+    grid-area: informations;
+    margin-top: 3em;
+  }
+
+  & > h3 {
+    grid-area: dates;
+    margin-top: 1em;
+    text-align: right;
+    font-size: .8em;
+  }
+
+  & > h2 {
+    grid-area: for;
+    margin: 0;
+    margin-top: 1em;
+    font-size: .8em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  & > ${Title} {
+    grid-area: title;
+    margin: 0;
+  }
+
+  & > .logos {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    & > ${CompagnyLogo} {
+      font-size: 1.5em;
+      transition: margin 100ms ease-in-out;
+
+      &:first-child {
+        margin-right: -.5em;
+        z-index: 10;
+      }
+    }
+
+    &:hover {
+      & > ${CompagnyLogo}:first-child {
+        margin-right: .1em;
+      }
+    }
+  }
 `
