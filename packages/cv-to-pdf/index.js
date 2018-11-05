@@ -8,7 +8,7 @@ const run = async () => {
   await page.evaluate(() => {
     root.style.fontSize = '20px'
   })
-  await page.pdf({ scale: 0.6, path: 'cv.pdf', format: 'A4', printBackground: true })
+  await page.pdf({ scale: 0.6, path: 'cv.pdf', format: 'A4', printBackground: true, margin: { top: 40, left: 0, right: 0, bottom: 0 } })
 
   await browser.close()
 }

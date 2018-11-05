@@ -6,7 +6,6 @@
   "private": true,
   "scripts": {
     "start": "run-p start:*",
-    "start:ui": "yarn --cwd packages/ui start",
     "start:api": "yarn --cwd packages/api-gateway start"
   },
   "workspaces": [

@@ -46,10 +46,6 @@ export default styled(Summary)`
   position: relative;
   width: 100vw;
 
-  @media print {
-    display: none;
-  }
-
   & > .background {
     background-color: #f3f3f3;
     position: absolute;
@@ -105,6 +101,12 @@ export default styled(Summary)`
           margin-top: 0.5em;
         }
       }
+    }
+  }
+
+  @media print {
+    & > .background {
+      background-color: white;
     }
   }
 `

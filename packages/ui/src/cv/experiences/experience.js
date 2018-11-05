@@ -149,4 +149,9 @@ export default styled(Experience)`
     }
   }
 
+
+  @media print {
+    page-break-inside: avoid;
+    font-size: .9em;
+  }
 `

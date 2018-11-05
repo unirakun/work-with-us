@@ -51,4 +51,8 @@ export default styled(CV)`
     "who"
     "description"
     "experiences";
+
+  @media print {
+    background-color: white;
+  }
 `
