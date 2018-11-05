@@ -13,10 +13,7 @@ export default {
     to: Date.UTC(2018, 0),
   },
   informations: [
-    `L'ICES (Institut Catholique d'Etudes Supérieures) a besoin de refondre entièrement leur SI.
-    Cela comprend : la gestion des prospects, des étudiants, de la facturation, des salles, des notes, etc.
-    Dans ce cadre j'ai mis en place l'architecture logicielle, à base de micro services NodeJS et d'une
-    gateway GraphQL, hébergé sur le cloud Google.`,
+    'L\'ICES (Institut Catholique d\'Etudes Supérieures) a besoin de refondre entièrement leur SI. Cela comprend la gestion des prospects, des étudiants, de la facturation, des salles, des notes, etc. Dans ce cadre j\'ai mis en place l\'architecture logicielle, à base de micro services NodeJS et d\'une gateway GraphQL, hébergé sur le cloud Google.',
     'Les technologies utilisées sont les suivantes:',
     [
       'Tests d\'intégration',

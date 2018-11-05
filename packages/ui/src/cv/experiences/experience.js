@@ -11,7 +11,9 @@ const List = styled(({ children = [], className }) => (
       return <li key={item} dangerouslySetInnerHTML={{ __html: item.replace(/\n/g, '<br />')}} />
     })}
   </ul>
-))``
+))`
+  text-align: justify;
+`
 
 const Experience = (props) => {
   const {
@@ -95,7 +97,13 @@ export default styled(Experience)`
 
   & > ${List} {
     grid-area: informations;
-    margin-top: 3em;
+    margin-top: 1em;
+    padding: 0;
+    list-style: none;
+
+    & > li {
+      margin-top: 1em;
+    }
   }
 
   & > .logos {
@@ -139,12 +147,6 @@ export default styled(Experience)`
     & > h3 {
       text-align: left;
     }
-
-    & > ${List} {
-      grid-area: informations;
-      margin-top: 2em;
-    }
-
   }
 
 `
