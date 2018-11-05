@@ -1,4 +1,3 @@
-// import 'isomorphic-fetch'
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 import { ApolloProvider, renderToStringWithData, Query } from 'react-apollo'
