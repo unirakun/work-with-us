@@ -7,7 +7,6 @@ import { createHttpLink } from "apollo-link-http"
 import { ThemeProvider } from 'styled-components'
 import App from './app'
 import theme from './theme'
-import 'normalize.css'
 
 const client = new ApolloClient({
   ssrForceFetchDelay: 100,
