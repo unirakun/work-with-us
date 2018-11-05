@@ -10,12 +10,12 @@ import sparklane from './sparklane'
 
 export default [
   chargeProjet,
-  // concepteur,
-  // developpeur,
-  // ge,
-  // ices,
-  // maif,
-  // mcomm,
-  // santeclair,
-  // sparklane,
+  concepteur,
+  developpeur,
+  ge,
+  ices,
+  maif,
+  mcomm,
+  santeclair,
+  sparklane,
 ].sort((expA, expB) => expA.dates.to === undefined ? 1 : (expB.dates.to - expA.dates.to))

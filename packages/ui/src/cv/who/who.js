@@ -47,21 +47,21 @@ const Who = (props) => {
 
   return (
     <Background className={className} gradient>
-      <GridArea name="avatar" as={Avatar} src={avatar} />
+      <Avatar src={avatar} />
 
-      <GridArea name="description" as={Description}>
+      <div className="description">
         <h1>{name}</h1>
         <h2>{what}</h2>
-      </GridArea>
+      </div>
 
-      <GridArea name="age-experience">
+      <div className="age-experience">
         <Age from={birthday} suffix=" ans - "/>
         <Age from={worksSince} suffix=" ans d'expérience" />
-      </GridArea>
+      </div>
 
-      <GridArea name="socials" as={Socials}>
+      <Socials>
         {socials.map(social => <Social key={social.name} {...social} />)}
-      </GridArea>
+      </Socials>
 
       {children}
 
@@ -77,20 +77,30 @@ const StyledWho = styled(Who)`
   display: grid;
   align-items: center;
   position: relative;
+  grid-template-columns: 1vw 10em auto 1fr auto 1vw;
+  grid-template-areas:
+    ". socials avatar . . ."
+    ". socials avatar description contacts ."
+    ". socials avatar age-experience contacts ."
+    ". socials avatar . . ."
+    "skills skills skills skills skills skills";
 
-  @media (min-width: 851px) {
-    grid-template-columns: 1vw 10em auto 1fr auto 1vw;
-    grid-template-areas:
-      ". socials avatar . . ."
-      ". socials avatar description contacts ."
-      ". socials avatar age-experience contacts ."
-      ". socials avatar . . ."
-      "skills skills skills skills skills skills";
+  & > ${Avatar} {
+    grid-area: avatar;
+    justify-self: end;
+    margin: 0 3em;
+  }
 
-    & ${Avatar} {
-      justify-self: end;
-      margin: 0 3em;
-    }
+  & > .description {
+    grid-area: description;
+  }
+
+  & > .age-experience {
+    grid-area: age-experience;
+  }
+
+  & > ${Socials} {
+    grid-area: socials;
   }
 
   @media (max-width: 850px) {

@@ -1,6 +1,6 @@
 const duration = `{
-  from: Int!
-  to: Int
+  from: Float!
+  to: Float
 }`
 
 module.exports = `

@@ -41,6 +41,18 @@ const FETCH_CV = gql`
     description
     experiences {
       title
+      client {
+        name
+        color
+      }
+      for {
+        name
+        color
+      }
+      dates {
+        from
+        to
+      }
       informations {
         text
         children {
@@ -88,9 +100,9 @@ const CV = ({ className, name }) => (
             {description}
           </Description>
 
-          {/* <Experiences>
+          <Experiences>
             {experiences}
-          </Experiences> */}
+          </Experiences>
         </div>
       )
     }}

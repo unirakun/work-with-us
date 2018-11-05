@@ -13,20 +13,24 @@ export default {
     to: Date.UTC(2016, 4),
   },
   informations: [
-    'Création d\'un front-end avec les technologies Facebook pour une nouvelle application web de la branche "Money", solutions de financement pour les particuliers.',
-    'Missions :',
-    [
-      'Mise en place du socle technique',
-      'Mise en place du socle de tests',
-      'Mise en place de la CI/CD avec les technologies cloud',
-    ],
-    'Technologies utilisées :',
-    [
-      'ReactJS / Redux',
-      'Webpack / Babel / ESLint',
-      'Mocha / Chai / Sinon',
-      'CircleCI / Github',
-      'Docker',
-    ],
+    { text: 'Création d\'un front-end avec les technologies Facebook pour une nouvelle application web de la branche "Money", solutions de financement pour les particuliers.', },
+    {
+      text: 'Missions :',
+      children: [
+        { text: 'Mise en place du socle technique', },
+        { text: 'Mise en place du socle de tests', },
+        { text: 'Mise en place de la CI/CD avec les technologies cloud', },
+      ],
+    },
+    {
+      text: 'Technologies utilisées :',
+      children: [
+        { text: 'ReactJS / Redux', },
+        { text: 'Webpack / Babel / ESLint', },
+        { text: 'Mocha / Chai / Sinon', },
+        { text: 'CircleCI / Github', },
+        { text: 'Docker', },
+      ],
+    },
   ],
 }

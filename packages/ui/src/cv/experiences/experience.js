@@ -4,12 +4,14 @@ import { CompagnyLogo } from '../../components'
 
 const Date = ({ children }) => new Intl.DateTimeFormat(undefined, { year: "numeric", month: "long" }).format(children)
 
-const List = styled(({ children = [], className }) => (
+const List = styled(({ children, className }) => (
   <ul className={className}>
-    {children.map((item) => {
-      if (Array.isArray(item)) return <List key={item[0]}>{item}</List>
-      return <li key={item} dangerouslySetInnerHTML={{ __html: item.replace(/\n/g, '<br />')}} />
-    })}
+    {(children || []).map((item) => (
+      <Fragment>
+        <li key={item} dangerouslySetInnerHTML={{ __html: item.text.replace(/\n/g, '<br />')}} />
+        {item.children && <List key={item.children[0].text}>{item.children}</List>}
+      </Fragment>
+    ))}
   </ul>
 ))`
   text-align: justify;
