@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+import getId from './getExperienceId'
 
 const Summary = ({ className, children, columns }) => {
   const arrays = []
@@ -16,11 +17,11 @@ const Summary = ({ className, children, columns }) => {
       <div className="background" />
 
       {arrays.map(array => (
-        <ul>
+        <ul key={getId(array)}>
           {array
             .map(experience => (
-              <li key={`#${experience.title}-${experience.dates.from}`}>
-                <AnchorLink href={`#${experience.title}-${experience.dates.from}`} offset="100">
+              <li key={getId(experience)}>
+                <AnchorLink href={getId.withHash(experience)} offset="100">
                   {experience.title}
                   <div> {(experience.client || experience.for).name}</div>
                 </AnchorLink>
