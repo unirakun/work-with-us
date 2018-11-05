@@ -20,4 +20,10 @@ export default styled(Skills)`
   margin-top: 4em;
   padding: 1em;
   flex-wrap: wrap;
+
+  & > ${RatingsGroup} {
+    @media (max-width: 550px) {
+      margin 1em 0;
+    }
+  }
 `

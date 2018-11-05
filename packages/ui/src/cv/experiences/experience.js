@@ -119,4 +119,32 @@ export default styled(Experience)`
       }
     }
   }
+
+  @media (max-width: 800px) {
+    grid-template:
+      "title logos"
+      "for for"
+      "dates dates"
+      "informations informations";
+    grid-template-columns: auto 8em;
+
+    & > h1 {
+      font-size: 1.6em;
+    }
+
+    & > h2 {
+      justify-content: flex-start;
+    }
+
+    & > h3 {
+      text-align: left;
+    }
+
+    & > ${List} {
+      grid-area: informations;
+      margin-top: 2em;
+    }
+
+  }
+
 `
