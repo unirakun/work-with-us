@@ -2,12 +2,10 @@ export default {
   title: 'Développeur Full Stack',
   client: {
     name: 'M/COMM',
-    logo: 'https://media.licdn.com/dms/image/C4E0BAQFUufDvVe-yoQ/company-logo_200_200/0?e=2159024400&v=beta&t=Y2UrkvUbA3w-DfSvaUlxvetyqWJReZD2YaoY4yRgmio',
     color: '#171715',
   },
   for: {
     name: 'Zenika',
-    logo: 'https://media.licdn.com/dms/image/C4D0BAQGnZ7JP17AK9g/company-logo_200_200/0?e=1548892800&v=beta&t=kXYFe01xQsQ6aZgTw7YFKfOcaFC5alVvheSwVfk6ZzQ',
     color: 'black',
   },
   dates: {

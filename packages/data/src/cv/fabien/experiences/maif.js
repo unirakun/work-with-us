@@ -2,12 +2,10 @@ export default {
   title: 'Développeur Frontend',
   client: {
     name: 'MAIF',
-    logo: 'https://media.licdn.com/dms/image/C560BAQHaLe3UjvQoxw/company-logo_200_200/0?e=2159024400&v=beta&t=WOWCeNdZVP9ld3vk5oIOo7vBpA0E0zkXZ1zaNT9lJ8E',
     color: 'white',
   },
   for: {
     name: 'Zenika',
-    logo: 'https://media.licdn.com/dms/image/C4D0BAQGnZ7JP17AK9g/company-logo_200_200/0?e=1548892800&v=beta&t=kXYFe01xQsQ6aZgTw7YFKfOcaFC5alVvheSwVfk6ZzQ',
     color: 'black',
   },
   dates: {

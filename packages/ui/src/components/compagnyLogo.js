@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const CompagnyLogo = ({ className, src }) => (
+const CompagnyLogo = ({ className }) => (
   <div className={className}>
-    <img src={src} alt="compagny logo" />
+    <div className="image" />
   </div>
 )
 export default styled(CompagnyLogo)`
@@ -15,8 +15,10 @@ export default styled(CompagnyLogo)`
   background-color: ${({ color }) => color || 'white'};
   border-radius: 100%;
 
-  & img {
-    max-width: 1.5em;
-    max-height: 1.5em;
+  & > .image {
+    width: 1.5em;
+    height: 1.5em;
+    background-image: url('/${({ name = '' }) => name.toLowerCase().replace(/\//g, '').replace(/é/g, 'e').split(' ').join('')}.png');
+    background-size: contain;
   }
 `

@@ -32,8 +32,8 @@ const Experience = (props) => {
       <h1>{title}</h1>
 
       <div className="logos">
-        {client && <CompagnyLogo {...client}  src={client.logo} />}
-        <CompagnyLogo {...props.for} src={props.for.logo} />
+        {client && <CompagnyLogo {...client} />}
+        <CompagnyLogo {...props.for} />
       </div>
 
       <h2>

@@ -2,12 +2,10 @@ export default {
   title: 'Architecte & Développeur fullstack',
   client: {
     name: 'ICES',
-    logo: 'https://media.licdn.com/dms/image/C4D0BAQEq1mZmpbFWUw/company-logo_200_200/0?e=1548892800&v=beta&t=szaP32uZXZd-SKt4kfSsU4kg-ql9F73FPUruyihCOyU',
     color: 'white',
   },
   for: {
     name: 'Zenika',
-    logo: 'https://media.licdn.com/dms/image/C4D0BAQGnZ7JP17AK9g/company-logo_200_200/0?e=1548892800&v=beta&t=kXYFe01xQsQ6aZgTw7YFKfOcaFC5alVvheSwVfk6ZzQ',
     color: 'black',
   },
   dates: {
