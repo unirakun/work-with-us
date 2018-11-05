@@ -2,19 +2,6 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { CompagnyLogo } from '../../components'
 
-const Title = styled.h1`
-  display: flex;
-  align-items: center;
-
-  & ${CompagnyLogo} {
-    margin-right: 1em;
-
-    &:first-child {
-      margin-left: auto;
-    }
-  }
-`
-
 const Date = ({ children }) => new Intl.DateTimeFormat(undefined, { year: "numeric", month: "long" }).format(children)
 
 const List = styled(({ children = [], className }) => (
@@ -42,15 +29,14 @@ const Experience = (props) => {
 
   return (
     <div className={className} id={`${title}-${from}`}>
-      <Title>
-        {title}
-      </Title>
+      <h1>{title}</h1>
+
       <div className="logos">
         {client && <CompagnyLogo {...client}  src={client.logo} />}
         <CompagnyLogo {...props.for} src={props.for.logo} />
       </div>
+
       <h2>
-      {/* || (props.for && props.for.name)} */}
         {client && client.name ?
           (
             <Fragment>
@@ -83,16 +69,11 @@ export default styled(Experience)`
     "title dates"
     "informations informations";
 
-  & > ${List} {
-    grid-area: informations;
-    margin-top: 3em;
-  }
-
-  & > h3 {
-    grid-area: dates;
-    margin-top: 1em;
-    text-align: right;
-    font-size: .8em;
+  & > h1 {
+    grid-area: title;
+    display: flex;
+    align-items: center;
+    margin: 0;
   }
 
   & > h2 {
@@ -105,9 +86,16 @@ export default styled(Experience)`
     justify-content: flex-end;
   }
 
-  & > ${Title} {
-    grid-area: title;
-    margin: 0;
+  & > h3 {
+    grid-area: dates;
+    margin-top: 1em;
+    text-align: right;
+    font-size: .8em;
+  }
+
+  & > ${List} {
+    grid-area: informations;
+    margin-top: 3em;
   }
 
   & > .logos {
