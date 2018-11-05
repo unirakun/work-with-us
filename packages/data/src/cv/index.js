@@ -1,5 +1,1 @@
-import fabien from './fabien'
-
-export default [
-  fabien,
-]
+export { default as fabien } from './fabien'

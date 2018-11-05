@@ -1,1 +1,5 @@
-export { default as cv } from './cv'
+import * as cv from './cv'
+
+export {
+  cv
+}

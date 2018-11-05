@@ -1,12 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import ApolloClient from 'apollo-boost'
-// import { ApolloProvider } from 'react-apollo'
+import ApolloClient from 'apollo-boost'
+import { ApolloProvider } from 'react-apollo'
 import { ThemeProvider } from 'styled-components'
 import App from './app'
 import 'normalize.css'
-
-// const client = new ApolloClient({})
 
 const theme = {
   dark: '#484848',
@@ -21,12 +19,14 @@ const theme = {
   },
 }
 
+const client = new ApolloClient({})
+
 const Wrapped = () => (
-  // <ApolloProvider client={client}>
+  <ApolloProvider client={client}>
     <ThemeProvider theme={theme}>
       <App />
     </ThemeProvider>
-  // </ApolloProvider>
+  </ApolloProvider>
 )
 
 if (typeof window !== 'undefined') {

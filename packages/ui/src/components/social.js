@@ -2,28 +2,24 @@ import React from 'react'
 import SocialLogo from 'social-logos'
 import styled from 'styled-components'
 
-const SOCIALS = ['twitter', 'github', 'linkedin']
-const getSocial = (text = '') => SOCIALS.find(social => text.includes(social)) || 'unknown'
-const getName = (text = '') => text.split('/').pop()
+const getPseudo = (text = '') => text.split('/').pop()
 
 const StyledSocialLogo = styled(SocialLogo)`
   fill: ${({ theme }) => theme.primary.fg};
 `
 
-const Social = ({ className, children, href }) => {
-  const link = children || href
-  const social = getSocial(link)
-  const name = getName(link)
+const Social = ({ className, name, url }) => {
+  const pseudo = getPseudo(url)
 
-    return (
+  return (
     <a
       className={className}
-      href={link}
+      href={url}
     >
-      <StyledSocialLogo icon={social} size={36} />
+      <StyledSocialLogo icon={name} size={36} />
       <label>
-        {social === 'twitter' && '@'}
-        {name}
+        {name === 'twitter' && '@'}
+        {pseudo}
       </label>
     </a>
   )

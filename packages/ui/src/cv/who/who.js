@@ -40,20 +40,10 @@ const Who = (props) => {
     name,
     avatar,
     what,
-    informations,
+    socials,
     birthday,
     worksSince,
   } = props
-
-  const {
-    socials,
-  } = informations
-
-  const {
-    twitter,
-    github,
-    linkedin
-  } = socials
 
   return (
     <Background className={className} gradient>
@@ -70,9 +60,7 @@ const Who = (props) => {
       </GridArea>
 
       <GridArea name="socials" as={Socials}>
-        <Social href={twitter} />
-        <Social href={github} />
-        <Social href={linkedin} />
+        {socials.map(social => <Social key={social.name} {...social} />)}
       </GridArea>
 
       {children}

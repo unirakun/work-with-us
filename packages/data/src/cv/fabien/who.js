@@ -4,11 +4,18 @@ export default {
   what: 'Javascript developer - Fullstack',
   birthday: Date.UTC(1988, 3, 25),
   worksSince: Date.UTC(2010, 8, 1),
-  informations: {
-    socials: {
-      twitter: 'https://twitter.com/fabienjuif',
-      github: 'https://github.com/fabienjuif',
-      linkedin: 'https://www.linkedin.com/in/fabienjuif',
+  socials: [
+    {
+      name: 'twitter',
+      url: 'https://twitter.com/fabienjuif',
     },
-  },
+    {
+      name: 'github',
+      url: 'https://github.com/fabienjuif',
+    },
+    {
+      name: 'linkedin',
+      url: 'https://www.linkedin.com/in/fabienjuif',
+    },
+  ],
 }

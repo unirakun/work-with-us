@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { gql } from 'apollo-boost'
+import { Query } from 'react-apollo'
 import Who from './who'
 import Experiences from './experiences'
 import Skills from './skills'
@@ -15,33 +17,75 @@ const Description = styled.div`
   background-color: ${({ theme }) => theme.secondary.bg};
 `
 
-const CV = (props) => {
-  const {
-    className,
-    who,
-    description,
-    skills,
-    experiences,
-  } = props
+const CV = ({ className, name }) => (
+  <Query
+      query={gql`
+        {
+          cvs(name: "fabien") {
+            who {
+              name
+              avatar
+              what
+              birthday
+              worksSince
+              socials {
+                name,
+                url
+              }
+            }
+            experiences {
+              title
+              informations {
+                text
+                children {
+                  text
+                  children {
+                    text
+                  }
+                }
+              }
+            }
+          }
+        }
+      `}
+    >
+      {({ loading, error, data }) => {
+        if (loading) return <div>Loading...</div>
+        if (error) {
+          console.error(error)
+          return null
+        }
 
-  return (
-    <div className={className}>
-      <Who {...who}>
-        <Skills>
-          {skills}
-        </Skills>
-      </Who>
+        const { cvs } = data
+        const [cv] = cvs
 
-      <Description>
-        {description}
-      </Description>
+        const {
+          who,
+          description,
+          skills,
+          experiences,
+        } = cv
 
-      <Experiences>
-        {experiences}
-      </Experiences>
-    </div>
-  )
-}
+        return (
+          <div className={className}>
+            <Who {...who}>
+              {/* <Skills>
+                {skills}
+              </Skills> */}
+            </Who>
+
+            <Description>
+              {description}
+            </Description>
+
+            {/* <Experiences>
+              {experiences}
+            </Experiences> */}
+          </div>
+        )
+      }}
+  </Query>
+)
 
 export default styled(CV)`
   display: grid;

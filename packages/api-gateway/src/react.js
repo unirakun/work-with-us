@@ -1,3 +1,4 @@
+import 'isomorphic-fetch'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import App from '@work-with-us/ui'
