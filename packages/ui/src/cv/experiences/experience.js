@@ -41,7 +41,7 @@ const Experience = (props) => {
   } = dates
 
   return (
-    <a name={`${title}-${from}`} className={className}>
+    <div className={className} id={`${title}-${from}`}>
       <Title>
         {title}
       </Title>
@@ -70,7 +70,7 @@ const Experience = (props) => {
         <Date>{to}</Date>
       </h3>
       <List>{informations}</List>
-    </a>
+    </div>
   )
 }
 

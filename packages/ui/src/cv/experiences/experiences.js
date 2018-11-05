@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 import Experience from './experience'
 
 const Experiences = ({ className, children }) => (
@@ -14,10 +15,10 @@ const Experiences = ({ className, children }) => (
           .filter((_, index) => index <= children.length / 2)
           .map(experience => (
             <li key={`#${experience.title}-${experience.dates.from}`}>
-              <a href={`#${experience.title}-${experience.dates.from}`}>
+              <AnchorLink href={`#${experience.title}-${experience.dates.from}`} offset="100">
                 {experience.title}
                 <div> {(experience.client || experience.for).name}</div>
-              </a>
+              </AnchorLink>
             </li>
           ))
         }
@@ -28,10 +29,10 @@ const Experiences = ({ className, children }) => (
           .filter((_, index) => !(index <= children.length / 2))
           .map(experience => (
             <li key={`#${experience.title}-${experience.dates.from}`}>
-              <a href={`#${experience.title}-${experience.dates.from}`}>
+              <AnchorLink href={`#${experience.title}-${experience.dates.from}`} offset="100">
                 {experience.title}
                 <div> {(experience.client || experience.for).name}</div>
-              </a>
+              </AnchorLink>
             </li>
           ))
         }
@@ -41,7 +42,6 @@ const Experiences = ({ className, children }) => (
 
     {children.map(experience => (
       <Experience
-        key={`#${experience.title}-${experience.dates.from}`}
         {...experience}
       />
     ))}
