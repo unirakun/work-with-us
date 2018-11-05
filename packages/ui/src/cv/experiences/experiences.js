@@ -1,17 +1,72 @@
 import React from 'react'
 import styled from 'styled-components'
+import gql from 'graphql-tag'
+import { Query } from 'react-apollo'
 import Summary from './summary'
 import Experience from './experience'
 import getId from './getExperienceId'
 
-const Experiences = ({ className, children }) => (
-  <div className={className}>
-    <h1>Expériences</h1>
+const GET_EXPERIENCES = gql`
+  query getExperiences ($name: String!) {
+    cvs(name: $name) {
+      description
+      experiences {
+        title
+        client {
+          name
+          color
+        }
+        for {
+          name
+          color
+        }
+        dates {
+          from
+          to
+        }
+        informations {
+          text
+          children {
+            text
+            children {
+              text
+            }
+          }
+        }
+      }
+    }
+  }
+  `
 
-    <Summary columns={2}>{children}</Summary>
+const Experiences = ({ className, name }) => (
+  <Query
+    query={GET_EXPERIENCES}
+    variables={{ name }}
+  >
+    {({ loading, error, data }) => {
+      if (loading) return <div>Loading...</div>
+      if (error) {
+        console.error(error)
+        return null
+      }
 
-    {children.map(experience => <Experience key={getId(experience)} {...experience} />)}
-  </div>
+      const { cvs } = data
+      const [cv] = cvs
+      const {
+        experiences
+      } = cv
+
+      return (
+        <div className={className}>
+          <h1>Expériences</h1>
+
+          <Summary columns={2}>{experiences}</Summary>
+
+          {experiences.map(experience => <Experience key={getId(experience)} {...experience} />)}
+        </div>
+      )
+    }}
+  </Query>
 )
 
 export default styled(Experiences)`

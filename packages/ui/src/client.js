@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { ApolloProvider } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
-import { createHttpLink } from "apollo-link-http"
+import { BatchHttpLink } from 'apollo-link-batch-http'
 import { ThemeProvider } from 'styled-components'
 import App from './app'
 import theme from './theme'
@@ -11,9 +11,7 @@ import theme from './theme'
 const client = new ApolloClient({
   ssrForceFetchDelay: 100,
   cache: new InMemoryCache().restore(window.__APOLLO_STATE),
-  link: createHttpLink({
-    uri: '/graphql',
-  }),
+  link: new BatchHttpLink({ uri: "/graphql" }),
 })
 
 ReactDOM.render(

@@ -4,7 +4,6 @@ import gql from 'graphql-tag'
 import { Query } from 'react-apollo'
 import Who from './who'
 import Experiences from './experiences'
-import Skills from './skills'
 
 const Description = styled.div`
   grid-area: description;
@@ -17,97 +16,46 @@ const Description = styled.div`
   background-color: ${({ theme }) => theme.secondary.bg};
 `
 
-const FETCH_CV = gql`
-query getCV ($name: String!) {
-  cvs(name: $name) {
-    who {
-      name
-      avatar
-      what
-      birthday
-      worksSince
-      socials {
-        name,
-        url
-      }
-    }
-    skills {
-      name
-      skills {
-        name
-        note
-      }
-    }
-    description
-    experiences {
-      title
-      client {
-        name
-        color
-      }
-      for {
-        name
-        color
-      }
-      dates {
-        from
-        to
-      }
-      informations {
-        text
-        children {
-          text
-          children {
-            text
-          }
-        }
-      }
+const GET_CV = gql`
+  query getCV ($name: String!) {
+    cvs(name: $name) {
+      description
     }
   }
-}
 `
 
 const CV = ({ className, name }) => (
-  <Query
-    query={FETCH_CV}
-    variables={{ name }}
-  >
-    {({ loading, error, data }) => {
-      if (loading) return <div>Loading...</div>
-      if (error) {
-        console.error(error)
-        return null
-      }
+  <div className={className}>
+    <Who name={name} />
 
-      const { cvs } = data
-      const [cv] = cvs
+    <Query
+      query={GET_CV}
+      variables={{ name }}
+    >
+      {({ loading, error, data }) => {
+        if (loading) return <div>Loading...</div>
+        if (error) {
+          console.error(error)
+          return null
+        }
 
-      const {
-        who,
-        description,
-        skills,
-        experiences,
-      } = cv
+        const { cvs } = data
+        const [cv] = cvs
 
-      return (
-        <div className={className}>
-          <Who {...who}>
-            <Skills>
-              {skills}
-            </Skills>
-          </Who>
+        const {
+          description,
+        } = cv
 
+        return (
           <Description>
             {description}
           </Description>
+        )
+      }}
+    </Query>
 
-          <Experiences>
-            {experiences}
-          </Experiences>
-        </div>
-      )
-    }}
-  </Query>
+    <Experiences name={name} />
+  </div>
 )
 
 export default styled(CV)`
