@@ -13,7 +13,7 @@ export default {
     to: Date.UTC(2016, 4),
   },
   informations: [
-    'Création d\'un front-end avec les technologies facebook pour une nouvelle application web de la branche "Money", solutions de financement pour les particuliers.',
+    'Création d\'un front-end avec les technologies Facebook pour une nouvelle application web de la branche "Money", solutions de financement pour les particuliers.',
     'Missions :',
     [
       'Mise en place du socle technique',

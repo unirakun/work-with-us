@@ -19,7 +19,7 @@ export default {
     'L’équipe se compose de 8 personnes, et la méthode Scrum est utilisée avec des sprints de deux semaines.',
     'Missions :',
     [
-      'Mise en place d’une architecture front-end réactive et évolutive basée sur l’architecture composant proposée par ReactJS (produit facebook) et de Redux, l’approche unidirectionnelle de traitement des données',
+      'Mise en place d’une architecture front-end réactive et évolutive basée sur l’architecture composants proposée par ReactJS (produit Facebook) et de Redux, l’approche unidirectionnelle de traitement des données',
       'Mise en place d’une intégration continue (CI) basée sur Jenkins et Docker',
       'Mise en place d’un déploiement continu (CD) basée sur Docker',
       'Outils de construction et de tests',
