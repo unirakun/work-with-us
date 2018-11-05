@@ -90,7 +90,7 @@ const StyledWho = styled(Who)`
   align-items: center;
   position: relative;
 
-  @media screen and (min-width: 850px) {
+  @media (min-width: 851px) {
     grid-template-columns: 1vw 10em auto 1fr auto 1vw;
     grid-template-areas:
       ". socials avatar . . ."
@@ -105,7 +105,7 @@ const StyledWho = styled(Who)`
     }
   }
 
-  @media screen and (max-width: 850px) {
+  @media (max-width: 850px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas:
       ". socials avatar ."

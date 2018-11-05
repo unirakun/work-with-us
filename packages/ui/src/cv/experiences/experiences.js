@@ -67,6 +67,10 @@ export default styled(Experiences)`
     position: relative;
     width: 100vw;
 
+    @media print {
+      display: none;
+    }
+
     & > .background {
       background-color: #f3f3f3;
       position: absolute;
