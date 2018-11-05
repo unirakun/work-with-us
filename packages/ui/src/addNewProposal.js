@@ -1,5 +1,5 @@
 import React from 'react'
-import { gql } from 'apollo-boost'
+import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 

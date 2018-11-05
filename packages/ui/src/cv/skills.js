@@ -4,7 +4,7 @@ import { RatingsGroup } from '../components'
 
 const Skills = ({ className, children }) => (
   <div className={className}>
-    {Object.entries(children).map(([name, ratings]) => <RatingsGroup key={name} name={name} ratings={ratings} />)}
+    {children.map(({ name, skills }) => <RatingsGroup key={name} skills={skills} />)}
   </div>
 )
 

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 // import Proposals from './proposals'
 // import AddNewProposal from './addNewProposal'
 import CV from './cv'
@@ -9,9 +9,9 @@ const App = () => (
   //   <Proposals />
   //   <AddNewProposal />
   // </div>
-  <Fragment>
-    <CV name="fabien" />
-  </Fragment>
+  // <Fragment>
+  <CV name="fabien" />
+  // </Fragment>
 )
 
 export default App

@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import Rating from './rating'
 
-const RatingsGroup = ({ className, name, ratings }) => (
+const RatingsGroup = ({ className, skills }) => (
   <div className={className}>
-    {ratings.map(rating => <Rating key={rating[0]}>{rating}</Rating>)}
+    {skills.map(({ name, note }) => <Rating key={name} name={name}>{note}</Rating>)}
   </div>
 )
 

@@ -7,13 +7,11 @@ const Label = styled.label`
   margin-right: .5em;
 `
 
-const Rating = ({ className, children = [] }) => {
+const Rating = ({ className, name, children }) => {
   return (
     <div className={className}>
-      <Label>{children[0]}</Label>
-      <Stars>
-        {children}
-      </Stars>
+      <Label>{name}</Label>
+      <Stars>{children}</Stars>
     </div>
   )
 }
