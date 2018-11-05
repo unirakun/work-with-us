@@ -18,8 +18,8 @@ const Description = styled.div`
 `
 
 const FETCH_CV = gql`
-{
-  cvs(name: "fabien") {
+query getCV ($name: String!) {
+  cvs(name: $name) {
     who {
       name
       avatar
@@ -70,6 +70,7 @@ const FETCH_CV = gql`
 const CV = ({ className, name }) => (
   <Query
     query={FETCH_CV}
+    variables={{ name }}
   >
     {({ loading, error, data }) => {
       if (loading) return <div>Loading...</div>
