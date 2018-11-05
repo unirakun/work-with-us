@@ -3,36 +3,6 @@ import styled from 'styled-components'
 import { lifecycle } from 'recompact'
 import { Avatar, Social, Age, Background } from '../../components'
 
-const GridArea = styled.div`
-  grid-area: ${({ name }) => name};
-`
-
-const Description = styled.div`
-  & h1, & h2 {
-    margin: 0;
-  }
-
-  & > *:not(:first-child) {
-    margin-top: .5em;
-  }
-`
-
-const Socials = styled.div`
-  justify-self: end;
-
-  & > *:not(:first-child) {
-    margin-top: 1em;
-  }
-`
-
-const Particles = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-`
-
 const Who = (props) => {
   const {
     className,
@@ -59,13 +29,13 @@ const Who = (props) => {
         <Age from={worksSince} suffix=" ans d'expérience" />
       </div>
 
-      <Socials>
+      <div className="socials">
         {socials.map(social => <Social key={social.name} {...social} />)}
-      </Socials>
+      </div>
 
       {children}
 
-      <Particles id="particles-js" />
+      <div id="particles-js" />
     </Background>
   )
 }
@@ -85,6 +55,14 @@ const StyledWho = styled(Who)`
     ". socials avatar . . ."
     "skills skills skills skills skills skills";
 
+  & > #particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   & > ${Avatar} {
     grid-area: avatar;
     justify-self: end;
@@ -99,8 +77,13 @@ const StyledWho = styled(Who)`
     grid-area: age-experience;
   }
 
-  & > ${Socials} {
+  & > .socials {
     grid-area: socials;
+    justify-self: end;
+
+    & > *:not(:first-child) {
+      margin-top: 1em;
+    }
   }
 
   @media (max-width: 850px) {
@@ -116,10 +99,6 @@ const StyledWho = styled(Who)`
     & ${Avatar} {
       justify-self: end;
       margin-left: 3em;
-    }
-
-    & ${Description} {
-      margin-top: 4em;
     }
   }
 
