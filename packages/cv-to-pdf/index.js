@@ -4,7 +4,7 @@ const run = async () => {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
   await page.setViewport({ height: 1060, width: 1024, deviceScaleFactor: 2 })
-  await page.goto('http://localhost:3000')
+  await page.goto('http://localhost:4000')
   await page.evaluate(() => {
     root.style.fontSize = '20px'
   })
