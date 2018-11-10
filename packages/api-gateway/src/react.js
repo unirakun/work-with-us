@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
-import { ApolloProvider, renderToStringWithData, Query } from 'react-apollo'
+import { ApolloProvider, renderToStringWithData } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { SchemaLink } from 'apollo-link-schema'
@@ -52,7 +52,6 @@ module.exports = async (ctx, next) => {
       .replace('<div id="root"></div>', `<div id="root"></div><script charset="UTF-8">window.__APOLLO_STATE = ${JSON.stringify(await client.cache.extract())}</script>`)
       .replace('<div id="root"></div>', `<div id="root">${html}</div>`)
       .replace('<style data-src="server-css"></style>', styleTags)
-
 
     renderCache.add('/', replacedHtml)
     ctx.body = replacedHtml
