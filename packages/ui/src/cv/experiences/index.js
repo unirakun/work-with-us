@@ -1,1 +1,1 @@
-export { default } from './experiences'
+export { default } from './experiences.container'

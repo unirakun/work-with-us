@@ -7,5 +7,5 @@ export default {
   who,
   description,
   skills,
-  experiences
+  experiences,
 }

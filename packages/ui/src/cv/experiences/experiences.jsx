@@ -4,9 +4,11 @@ import Summary from './summary'
 import Experience from './experience'
 import getId from './getExperienceId'
 
-const Experiences = ({ className, children }) => (
+const Experiences = ({ className, children = [] }) => (
   <div className={className}>
     <h1>Expériences</h1>
+
+    {/* TODO: construct id here ? Maybe in API... */}
 
     <Summary columns={2}>{children}</Summary>
 

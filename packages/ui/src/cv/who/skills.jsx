@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { RatingsGroup } from '../components'
+import { RatingsGroup } from '../../components'
 
 const Skills = ({ className, children }) => (
   <div className={className}>
-    {Object.entries(children).map(([name, ratings]) => <RatingsGroup key={name} name={name} ratings={ratings} />)}
+    {children.map(({ name, skills }) => <RatingsGroup key={name} skills={skills} />)}
   </div>
 )
 
@@ -23,7 +23,7 @@ export default styled(Skills)`
 
   & > ${RatingsGroup} {
     @media (max-width: 550px) {
-      margin 1em 0;
+      margin: 1em 0;
     }
   }
 `

@@ -2,82 +2,39 @@ import React from 'react'
 import styled from 'styled-components'
 import { lifecycle } from 'recompact'
 import { Avatar, Social, Age, Background } from '../../components'
+import Skills from './skills'
 
-const GridArea = styled.div`
-  grid-area: ${({ name }) => name};
-`
-
-const Description = styled.div`
-  & h1, & h2 {
-    margin: 0;
-  }
-
-  & > *:not(:first-child) {
-    margin-top: .5em;
-  }
-`
-
-const Socials = styled.div`
-  justify-self: end;
-
-  & > *:not(:first-child) {
-    margin-top: 1em;
-  }
-`
-
-const Particles = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-`
-
-const Who = (props) => {
+const Who = ({ className, who, skills }) => {
   const {
-    className,
-    children,
-    name,
     avatar,
+    name,
     what,
-    informations,
     birthday,
     worksSince,
-  } = props
-
-  const {
     socials,
-  } = informations
-
-  const {
-    twitter,
-    github,
-    linkedin
-  } = socials
+  } = who
 
   return (
     <Background className={className} gradient>
-      <GridArea name="avatar" as={Avatar} src={avatar} />
+      <Avatar src={avatar} />
 
-      <GridArea name="description" as={Description}>
+      <div className="description">
         <h1>{name}</h1>
         <h2>{what}</h2>
-      </GridArea>
+      </div>
 
-      <GridArea name="age-experience">
-        <Age from={birthday} suffix=" ans - "/>
+      <div className="age-experience">
+        <Age from={birthday} suffix=" ans - " />
         <Age from={worksSince} suffix=" ans d'expérience" />
-      </GridArea>
+      </div>
 
-      <GridArea name="socials" as={Socials}>
-        <Social href={twitter} />
-        <Social href={github} />
-        <Social href={linkedin} />
-      </GridArea>
+      <div className="socials">
+        {socials.map(social => <Social key={social.name} {...social} />)}
+      </div>
 
-      {children}
+      <Skills>{skills}</Skills>
 
-      <Particles id="particles-js" />
+      <div id="particles-js" />
     </Background>
   )
 }
@@ -89,19 +46,42 @@ const StyledWho = styled(Who)`
   display: grid;
   align-items: center;
   position: relative;
+  grid-template-columns: 1vw 10em auto 1fr auto 1vw;
+  grid-template-areas:
+    ". socials avatar . . ."
+    ". socials avatar description contacts ."
+    ". socials avatar age-experience contacts ."
+    ". socials avatar . . ."
+    "skills skills skills skills skills skills";
 
-  @media (min-width: 851px) {
-    grid-template-columns: 1vw 10em auto 1fr auto 1vw;
-    grid-template-areas:
-      ". socials avatar . . ."
-      ". socials avatar description contacts ."
-      ". socials avatar age-experience contacts ."
-      ". socials avatar . . ."
-      "skills skills skills skills skills skills";
+  & > #particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-    & ${Avatar} {
-      justify-self: end;
-      margin: 0 3em;
+  & > ${Avatar} {
+    grid-area: avatar;
+    justify-self: end;
+    margin: 0 3em;
+  }
+
+  & > .description {
+    grid-area: description;
+  }
+
+  & > .age-experience {
+    grid-area: age-experience;
+  }
+
+  & > .socials {
+    grid-area: socials;
+    justify-self: end;
+
+    & > *:not(:first-child) {
+      margin-top: 1em;
     }
   }
 
@@ -119,10 +99,6 @@ const StyledWho = styled(Who)`
       justify-self: end;
       margin-left: 3em;
     }
-
-    & ${Description} {
-      margin-top: 4em;
-    }
   }
 
   & > * {
@@ -136,6 +112,7 @@ const StyledWho = styled(Who)`
 
 export default lifecycle({
   componentDidMount: async () => {
+    /* eslint-env browser */
     if (typeof window !== 'undefined') {
       await import('particles.js')
 

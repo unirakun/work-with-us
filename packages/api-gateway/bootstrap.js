@@ -19,8 +19,8 @@ require('@babel/register')({
     [
       'babel-plugin-styled-components',
       {
-        pure: true
-      }
+        pure: true,
+      },
     ],
   ],
 })

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-import getId from './getExperienceId'
+import getId from '../getExperienceId' // TODO: find a way to store this in graphql ? If we can't find a way -> context ?
 
 const Summary = ({ className, children, columns }) => {
   const arrays = []
@@ -23,7 +23,7 @@ const Summary = ({ className, children, columns }) => {
               <li key={getId(experience)}>
                 <AnchorLink href={getId.withHash(experience)} offset="100">
                   {experience.title}
-                  <div> {(experience.client || experience.for).name}</div>
+                  <div>{(experience.client || experience.for).name}</div>
                 </AnchorLink>
               </li>
             ))

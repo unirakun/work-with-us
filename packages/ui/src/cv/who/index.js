@@ -1,1 +1,1 @@
-export { default } from './who'
+export { default } from './who.container'

@@ -7,16 +7,12 @@ const Label = styled.label`
   margin-right: .5em;
 `
 
-const Rating = ({ className, children = [] }) => {
-  return (
-    <div className={className}>
-      <Label>{children[0]}</Label>
-      <Stars>
-        {children}
-      </Stars>
-    </div>
-  )
-}
+const Rating = ({ className, name, children }) => (
+  <div className={className}>
+    <Label>{name}</Label>
+    <Stars>{children}</Stars>
+  </div>
+)
 
 export default styled(Rating)`
   display: flex;
