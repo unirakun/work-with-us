@@ -1,4 +1,4 @@
-const proposal = isInput => {
+const proposal = (isInput) => {
   const prefix = isInput ? 'Input' : ''
 
   return `{

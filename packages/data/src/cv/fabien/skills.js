@@ -13,7 +13,7 @@ export default [
       {
         name: 'Rust',
         note: 1,
-      }
+      },
     ],
   },
   {
@@ -21,19 +21,19 @@ export default [
     skills: [
       {
         name: 'ReactJS',
-        note:  5,
+        note: 5,
       },
       {
         name: 'Apollo',
-        note:  3,
+        note: 3,
       },
       {
         name: 'CycleJS',
-        note:  4,
+        note: 4,
       },
       {
         name: 'Redux',
-        note:  5,
+        note: 5,
       },
     ],
   },
@@ -42,19 +42,19 @@ export default [
     skills: [
       {
         name: 'NodeJS',
-        note:  5,
+        note: 5,
       },
       {
         name: 'GraphQL',
-        note:  3,
+        note: 3,
       },
       {
         name: 'Koa / Express',
-        note:  5,
+        note: 5,
       },
       {
         name: 'Socket.io',
-        note:  5,
+        note: 5,
       },
     ],
   },
@@ -63,15 +63,15 @@ export default [
     skills: [
       {
         name: 'Webpack',
-        note:  4,
+        note: 4,
       },
       {
         name: 'Cypress',
-        note:  3,
+        note: 3,
       },
       {
         name: 'Jest',
-        note:  3,
+        note: 3,
       },
     ],
   },
@@ -80,15 +80,15 @@ export default [
     skills: [
       {
         name: 'MongoDB',
-        note:  3,
+        note: 3,
       },
       {
         name: 'PostgreSQL',
-        note:  3,
+        note: 3,
       },
       {
         name: 'Redis',
-        note:  2,
+        note: 2,
       },
     ],
   },
@@ -97,15 +97,15 @@ export default [
     skills: [
       {
         name: 'Docker',
-        note:  4,
+        note: 4,
       },
       {
         name: 'GNU/Linux',
-        note:  4,
+        note: 4,
       },
       {
         name: 'Kubernetes',
-        note:  2,
+        note: 2,
       },
     ],
   },

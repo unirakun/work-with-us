@@ -11,7 +11,7 @@ import theme from './theme'
 const client = new ApolloClient({
   ssrForceFetchDelay: 100,
   cache: new InMemoryCache().restore(window.__APOLLO_STATE),
-  link: new BatchHttpLink({ uri: "/graphql" }),
+  link: new BatchHttpLink({ uri: '/graphql' }),
 })
 
 ReactDOM.render(

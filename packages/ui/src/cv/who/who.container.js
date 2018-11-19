@@ -25,7 +25,7 @@ const request = `query getWho ($name: String!) {
 }`
 
 const mapData = (data) => {
-  const { who, skills } =  data.cvs[0]
+  const { who, skills } = data.cvs[0]
   return {
     who,
     skills,

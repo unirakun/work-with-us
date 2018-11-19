@@ -1,7 +1,7 @@
 const { gql } = require('apollo-server')
 const contact = require('./contact')
 const proposal = require('./proposal')
-const cv = require ('./cv')
+const cv = require('./cv')
 
 module.exports = gql`
   ${contact}

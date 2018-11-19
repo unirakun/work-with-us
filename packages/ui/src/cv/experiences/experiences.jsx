@@ -12,7 +12,7 @@ const Experiences = ({ className, children = [] }) => (
 
     <Summary columns={2}>{children}</Summary>
 
-    {children.map(children => <Experience key={getId(children)} {...children} />)}
+    {children.map(experience => <Experience key={getId(experience)} {...experience} />)}
   </div>
 )
 

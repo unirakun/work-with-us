@@ -23,7 +23,7 @@ export default styled(Skills)`
 
   & > ${RatingsGroup} {
     @media (max-width: 550px) {
-      margin 1em 0;
+      margin: 1em 0;
     }
   }
 `

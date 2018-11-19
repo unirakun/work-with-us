@@ -18,4 +18,7 @@ export default [
   mcomm,
   santeclair,
   sparklane,
-].sort((expA, expB) => expA.dates.to === undefined ? 1 : (expB.dates.to - expA.dates.to))
+].sort((expA, expB) => {
+  if (expA.dates.to === undefined) return 1
+  return (expB.dates.to - expA.dates.to)
+})

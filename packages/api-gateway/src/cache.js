@@ -14,11 +14,15 @@ module.exports = ({
     // timeout
     const keysTimeout = Object
       .entries(cache)
-      .map(([key, store]) => (store.date + timeout) > Date.now() ? undefined : key)
+      .map(([key, store]) => {
+        if ((store.date + timeout) > Date.now()) return undefined
+        return key
+      })
       .filter(Boolean)
+
     if (keysTimeout.length > 0) {
       log(`[cache](${name}) timeout keys: [${keysTimeout}]`)
-       keysTimeout.forEach((key) => { delete cache[key] })
+      keysTimeout.forEach((key) => { delete cache[key] })
     }
 
     // max entries

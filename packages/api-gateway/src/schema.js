@@ -17,8 +17,8 @@ const resolvers = {
     addProposal: (root, { input }) => {
       proposals.push(input)
       return true
-    }
-  }
+    },
+  },
 }
 
 module.exports = makeExecutableSchema({ typeDefs, resolvers })

@@ -9,7 +9,7 @@ export default (
   query,
   mapData = defaultMapData,
   mapToVariables = defaultMapToVariables,
-) => Component => (props) => (
+) => Component => props => (
   <Query
     query={gql(query)}
     variables={mapToVariables(props)}

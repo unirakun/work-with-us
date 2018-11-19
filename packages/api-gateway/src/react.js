@@ -1,11 +1,11 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react'
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider, ServerStyleSheet } from 'styled-components'
 import { ApolloProvider, renderToStringWithData } from 'react-apollo'
 import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { SchemaLink } from 'apollo-link-schema'
 import { App, theme } from '@work-with-us/ui'
-import { ServerStyleSheet } from 'styled-components'
 import { promisify } from 'util'
 import path from 'path'
 import fs from 'fs'
@@ -43,8 +43,8 @@ module.exports = async (ctx, next) => {
           <ThemeProvider theme={theme}>
             <App />
           </ThemeProvider>
-        </ApolloProvider>
-      )
+        </ApolloProvider>,
+      ),
     )
     const styleTags = sheet.getStyleTags()
 

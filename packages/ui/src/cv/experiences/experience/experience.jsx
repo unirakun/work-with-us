@@ -6,7 +6,7 @@ const Date = ({ children }) => new Intl.DateTimeFormat(undefined, { year: "numer
 
 const List = styled(({ children, className }) => (
   <ul className={className}>
-    {(children || []).map((item) => (
+    {(children || []).map(item => (
       <Fragment>
         <li key={item} dangerouslySetInnerHTML={{ __html: item.text.replace(/\n/g, '<br />')}} />
         {item.children && <List key={item.children[0].text}>{item.children}</List>}
@@ -28,9 +28,10 @@ const Experience = (props) => {
 
   const {
     from,
-    to
+    to,
   } = dates
 
+  /* eslint-disable react/destructuring-assignment */
   return (
     <div className={className} id={`${title}-${from}`}>
       <h1>{title}</h1>
@@ -41,8 +42,8 @@ const Experience = (props) => {
       </div>
 
       <h2>
-        {client && client.name ?
-          (
+        {client && client.name
+          ? (
             <Fragment>
               {client.name}
               {', pour le compte de '}

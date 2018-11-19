@@ -15,12 +15,12 @@ export default {
     {
       text: 'Technologies utilisées :',
       children: [
-        { text: 'OSB (Oracle Service Bus)', },
-        { text: 'J2EE', },
-        { text: 'Hibernate', },
-        { text: 'Orika', },
-        { text: 'Junit', },
-        { text: 'Oracle', },
+        { text: 'OSB (Oracle Service Bus)' },
+        { text: 'J2EE' },
+        { text: 'Hibernate' },
+        { text: 'Orika' },
+        { text: 'Junit' },
+        { text: 'Oracle' },
       ],
     },
   ],

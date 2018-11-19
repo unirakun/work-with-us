@@ -3,7 +3,7 @@ const schema = require('./schema')
 
 const server = new ApolloServer({ schema })
 
-module.exports = app => {
+module.exports = (app) => {
   server.applyMiddleware({ app })
   return server
 }
