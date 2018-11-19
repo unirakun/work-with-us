@@ -1,90 +1,43 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { lifecycle } from 'recompact'
-import gql from 'graphql-tag'
-import { Query } from 'react-apollo'
 import { Avatar, Social, Age, Background } from '../../components'
 import Skills from './skills'
 
-const GET_WHO = gql`
-  query getWho ($name: String!) {
-    cvs (name: $name) {
-      who {
-        name
-        avatar
-        what
-        birthday
-        worksSince
-        socials {
-          name,
-          url
-        }
-      }
-      skills {
-        name
-        skills {
-          name
-          note
-        }
-      }
-    }
-  }
-`
+const Who = ({ className, who, skills }) => {
+  const {
+    avatar,
+    name,
+    what,
+    birthday,
+    worksSince,
+    socials,
+  } = who
 
-const Who = ({ className, name }) => (
-  <Background className={className} gradient>
-    <Query
-      query={GET_WHO}
-      variables={{ name }}
-    >
-      {({ error, loading, data }) => {
-        if (loading) return <div>Loading...</div>
-        if (error) {
-          console.error(error)
-          return null
-        }
+  return (
+    <Background className={className} gradient>
+      <Avatar src={avatar} />
 
-        const {
-          who,
-          skills
-        } = data.cvs[0]
+      <div className="description">
+        <h1>{name}</h1>
+        <h2>{what}</h2>
+      </div>
 
-        const {
-          avatar,
-          name,
-          what,
-          birthday,
-          worksSince,
-          socials,
-        } = who
+      <div className="age-experience">
+        <Age from={birthday} suffix=" ans - "/>
+        <Age from={worksSince} suffix=" ans d'expérience" />
+      </div>
 
-        return (
-          <Fragment>
-            <Avatar src={avatar} />
+      <div className="socials">
+        {socials.map(social => <Social key={social.name} {...social} />)}
+      </div>
 
-            <div className="description">
-              <h1>{name}</h1>
-              <h2>{what}</h2>
-            </div>
+      <Skills>{skills}</Skills>
 
-            <div className="age-experience">
-              <Age from={birthday} suffix=" ans - "/>
-              <Age from={worksSince} suffix=" ans d'expérience" />
-            </div>
-
-            <div className="socials">
-              {socials.map(social => <Social key={social.name} {...social} />)}
-            </div>
-
-            <Skills>{skills}</Skills>
-          </Fragment>
-        )
-      }}
-    </Query>
-
-    <div id="particles-js" />
-  </Background>
-)
+      <div id="particles-js" />
+    </Background>
+  )
+}
 
 const StyledWho = styled(Who)`
   grid-area: who;

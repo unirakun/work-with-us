@@ -5,8 +5,14 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "run-p start:*",
-    "start:api": "yarn --cwd packages/api-gateway start"
+    "start": "run-p start:api",
+    "start:api": "yarn --cwd packages/api-gateway start",
+    "start:dev": "run-p start:dev:*",
+    "start:dev:api": "yarn --cwd packages/api-gateway start:dev",
+    "start:dev:ui": "BROWSER=none yarn --cwd packages/ui start",
+    "build": "run-p build:*",
+    "build:hocs": "yarn --cwd packages/ui-hoc build",
+    "build:ui": "yarn --cwd packages/ui build"
   },
   "workspaces": [
     "packages/*"
