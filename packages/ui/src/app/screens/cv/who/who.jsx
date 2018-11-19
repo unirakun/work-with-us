@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { lifecycle } from 'recompact'
-import { Avatar, Social, Age, Background } from '../../components'
+import { Avatar, Social, Age, Background } from '../../../../components'
 import Skills from './skills'
 
 const Who = ({ className, who, skills }) => {
