@@ -35,4 +35,5 @@ export default styled(Experiences)`
       max-width: 70em;
       margin: 5em auto;
     }
+  }
 `
