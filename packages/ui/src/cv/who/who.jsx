@@ -24,7 +24,7 @@ const Who = ({ className, who, skills }) => {
       </div>
 
       <div className="age-experience">
-        <Age from={birthday} suffix=" ans - "/>
+        <Age from={birthday} suffix=" ans - " />
         <Age from={worksSince} suffix=" ans d'expérience" />
       </div>
 
@@ -112,6 +112,7 @@ const StyledWho = styled(Who)`
 
 export default lifecycle({
   componentDidMount: async () => {
+    /* eslint-env browser */
     if (typeof window !== 'undefined') {
       await import('particles.js')
 

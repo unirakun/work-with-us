@@ -2,13 +2,13 @@ import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { CompagnyLogo } from '../../../components'
 
-const Date = ({ children }) => new Intl.DateTimeFormat(undefined, { year: "numeric", month: "long" }).format(children)
+const Date = ({ children }) => new Intl.DateTimeFormat(undefined, { year: 'numeric', month: 'long' }).format(children)
 
 const List = styled(({ children, className }) => (
   <ul className={className}>
-    {(children || []).map(item => (
+    {(children || []).map(item => (
       <Fragment>
-        <li key={item} dangerouslySetInnerHTML={{ __html: item.text.replace(/\n/g, '<br />')}} />
+        <li key={item} dangerouslySetInnerHTML={{ __html: item.text.replace(/\n/g, '<br />') }} />
         {item.children && <List key={item.children[0].text}>{item.children}</List>}
       </Fragment>
     ))}

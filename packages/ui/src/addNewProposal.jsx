@@ -11,7 +11,7 @@ const AddNewProposal = () => (
       }
     `}
   >
-    {(addProposal) => (
+    {addProposal => (
       <Formik
         onSubmit={(values, { setSubmitting }) => {
           addProposal({ variables: { input: values } })

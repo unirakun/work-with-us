@@ -1,3 +1,4 @@
+/* eslint-env browser */
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ApolloProvider } from 'react-apollo'
@@ -10,11 +11,11 @@ import theme from './theme'
 
 const client = new ApolloClient({
   ssrForceFetchDelay: 100,
-  cache: new InMemoryCache().restore(window.__APOLLO_STATE),
+  cache: new InMemoryCache().restore(window.__APOLLO_STATE), // eslint-disable-line no-underscore-dangle
   link: new BatchHttpLink({ uri: '/graphql' }),
 })
 
-ReactDOM.render(
+ReactDOM.hydrate(
   <ApolloProvider client={client}>
     <ThemeProvider theme={theme}>
       <App />

@@ -6,6 +6,16 @@ const CompagnyLogo = ({ className }) => (
     <div className="image" />
   </div>
 )
+
+const getBackgroundUrl = ({ name = '' }) => (
+  name
+    .toLowerCase()
+    .replace(/\//g, '')
+    .replace(/é/g, 'e')
+    .split(' ')
+    .join('')
+)
+
 export default styled(CompagnyLogo)`
   display: flex;
   align-items: center;
@@ -18,7 +28,7 @@ export default styled(CompagnyLogo)`
   & > .image {
     width: 1.5em;
     height: 1.5em;
-    background-image: url('/${({ name = '' }) => name.toLowerCase().replace(/\//g, '').replace(/é/g, 'e').split(' ').join('')}.png');
+    background-image: url('${getBackgroundUrl}.png');
     background-size: contain;
   }
 `

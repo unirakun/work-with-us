@@ -5,7 +5,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "lint": "eslint --cache packages/** --ignore-pattern node_modules --ignore-pattern build --ignore-pattern public --ignore-pattern dist",
+    "lint": "eslint --ext js,jsx --cache packages/** --ignore-pattern node_modules --ignore-pattern build --ignore-pattern public --ignore-pattern dist",
     "start": "run-p start:api",
     "start:api": "yarn --cwd packages/api-gateway start",
     "start:dev": "run-p start:dev:*",
@@ -23,7 +23,7 @@
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "9.0.0",
     "eslint": "5.6.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
@@ -36,6 +36,16 @@
     "extends": "airbnb",
     "rules": {
       "react/prop-types": "off",
+      "object-curly-newline": [
+        "error",
+        {
+          "ImportDeclaration": "never"
+        }
+      ],
+      "max-len": [
+        "warn",
+        300
+      ],
       "semi": [
         "error",
         "never"

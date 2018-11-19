@@ -23,7 +23,7 @@ const Summary = ({ className, children, columns }) => {
               <li key={getId(experience)}>
                 <AnchorLink href={getId.withHash(experience)} offset="100">
                   {experience.title}
-                  <div> {(experience.client || experience.for).name}</div>
+                  <div>{(experience.client || experience.for).name}</div>
                 </AnchorLink>
               </li>
             ))
