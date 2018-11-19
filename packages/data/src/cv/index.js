@@ -1,1 +1,2 @@
-export { default as fabien } from './fabien' // eslint-disable-line import/prefer-default-export
+export { default as fabien } from './fabien'
+export { default as guillaume } from './guillaume'

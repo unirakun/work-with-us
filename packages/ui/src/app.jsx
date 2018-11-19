@@ -26,6 +26,12 @@ const App = () => (
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
+        <NavLink to="/fabien">Fabien JUIF</NavLink>
+      </li>
+      <li>
+        <NavLink to="/guillaume">Guillaume CRESPEL</NavLink>
+      </li>
+      <li>
         <NavLink to="/proposals">Proposals</NavLink>
       </li>
     </ul>
@@ -35,6 +41,14 @@ const App = () => (
         exact
         path="/"
         render={() => <CV name="fabien" />}
+      />
+      <Route
+        path="/fabien"
+        render={() => <CV name="fabien" />}
+      />
+      <Route
+        path="/guillaume"
+        render={() => <CV name="guillaume" />}
       />
       <Route path="/proposals" component={ProposalScreen} />
       <Route component={NotFound} />
