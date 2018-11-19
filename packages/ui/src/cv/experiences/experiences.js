@@ -1,72 +1,19 @@
 import React from 'react'
 import styled from 'styled-components'
-import gql from 'graphql-tag'
-import { Query } from 'react-apollo'
 import Summary from './summary'
 import Experience from './experience'
 import getId from './getExperienceId'
 
-const GET_EXPERIENCES = gql`
-  query getExperiences ($name: String!) {
-    cvs(name: $name) {
-      description
-      experiences {
-        title
-        client {
-          name
-          color
-        }
-        for {
-          name
-          color
-        }
-        dates {
-          from
-          to
-        }
-        informations {
-          text
-          children {
-            text
-            children {
-              text
-            }
-          }
-        }
-      }
-    }
-  }
-  `
+const Experiences = ({ className, children = [] }) => (
+  <div className={className}>
+    <h1>Expériences</h1>
 
-const Experiences = ({ className, name }) => (
-  <Query
-    query={GET_EXPERIENCES}
-    variables={{ name }}
-  >
-    {({ loading, error, data }) => {
-      if (loading) return <div>Loading...</div>
-      if (error) {
-        console.error(error)
-        return null
-      }
+    {/* TODO: construct id here ? Maybe in API... */}
 
-      const { cvs } = data
-      const [cv] = cvs
-      const {
-        experiences
-      } = cv
+    <Summary columns={2}>{children}</Summary>
 
-      return (
-        <div className={className}>
-          <h1>Expériences</h1>
-
-          <Summary columns={2}>{experiences}</Summary>
-
-          {experiences.map(experience => <Experience key={getId(experience)} {...experience} />)}
-        </div>
-      )
-    }}
-  </Query>
+    {children.map(children => <Experience key={getId(children)} {...children} />)}
+  </div>
 )
 
 export default styled(Experiences)`

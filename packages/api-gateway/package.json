@@ -1,12 +1,13 @@
 {
   "name": "@work-with-us/gateway",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "./bootstrap.js",
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "node bootstrap.js"
+    "start": "node .",
+    "start:dev": "nodemon ."
   },
   "dependencies": {
     "@babel/core": "^7.1.2",
@@ -24,5 +25,8 @@
     "ignore-styles": "^5.0.1",
     "koa": "^2.6.1",
     "koa-static": "^5.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
   }
 }
