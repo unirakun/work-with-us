@@ -6,6 +6,7 @@ import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { BatchHttpLink } from 'apollo-link-batch-http'
 import { ThemeProvider } from 'styled-components'
+import { BrowserRouter } from 'react-router-dom'
 import App from './app'
 import theme from './theme'
 
@@ -18,7 +19,9 @@ const client = new ApolloClient({
 ReactDOM.hydrate(
   <ApolloProvider client={client}>
     <ThemeProvider theme={theme}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ThemeProvider>
   </ApolloProvider>,
   document.getElementById('root'),

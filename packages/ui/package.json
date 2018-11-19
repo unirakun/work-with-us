@@ -27,6 +27,7 @@
     "react-anchor-link-smooth-scroll": "^1.0.11",
     "react-apollo": "^2.2.4",
     "react-dom": "^16.0.0",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "react-star-rating-component": "^1.4.1",
     "recompact": "^3.4.0",
