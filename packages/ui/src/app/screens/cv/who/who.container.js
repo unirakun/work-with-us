@@ -6,6 +6,8 @@ const request = `query getWho ($name: String!) {
     who {
       name
       avatar
+      otherCode
+      otherAvatar
       what
       birthday
       worksSince

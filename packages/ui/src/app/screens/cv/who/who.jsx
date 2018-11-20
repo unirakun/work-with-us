@@ -1,13 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import { lifecycle } from 'recompact'
+import { NavLink } from 'react-router-dom'
 import { Avatar, Social, Age, Background } from '../../../../components'
 import Skills from './skills'
 
 const Who = ({ className, who, skills }) => {
   const {
     avatar,
+    otherAvatar,
     name,
+    otherCode,
     what,
     birthday,
     worksSince,
@@ -17,6 +20,9 @@ const Who = ({ className, who, skills }) => {
   return (
     <Background className={className} gradient>
       <Avatar src={avatar} />
+      <NavLink to={`/${otherCode}`} className="other">
+        <Avatar src={otherAvatar} />
+      </NavLink>
 
       <div className="description">
         <h1>{name}</h1>
@@ -46,13 +52,14 @@ const StyledWho = styled(Who)`
   display: grid;
   align-items: center;
   position: relative;
-  grid-template-columns: 1vw 10em auto 1fr auto 1vw;
+  grid-template-columns: 1vw 10em auto 1fr auto auto 1vw;
+  grid-template-rows: 3em 3em 3em 3em auto;
   grid-template-areas:
-    ". socials avatar . . ."
-    ". socials avatar description contacts ."
-    ". socials avatar age-experience contacts ."
-    ". socials avatar . . ."
-    "skills skills skills skills skills skills";
+    ". socials avatar . . other-avatar ."
+    ". socials avatar description contacts other-avatar ."
+    ". socials avatar age-experience contacts . ."
+    ". socials avatar . . . ."
+    "skills skills skills skills skills skills skills";
 
   & > #particles-js {
     position: absolute;
@@ -60,6 +67,24 @@ const StyledWho = styled(Who)`
     left: 0;
     width: 100%;
     height: 100%;
+  }
+
+  & > .other {
+    grid-area: other-avatar;
+    font-size: 0.5em;
+    cursor: pointer;
+
+    @media print {
+      display: none;
+    }
+
+    & > ${Avatar} {
+      opacity: 0.3;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
 
   & > ${Avatar} {
@@ -87,8 +112,9 @@ const StyledWho = styled(Who)`
 
   @media (max-width: 850px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
     grid-template-areas:
-      ". socials avatar ."
+      ". socials avatar other-avatar"
       "description description description description"
       "age-experience age-experience age-experience age-experience"
       "contacts contacts contacts contacts"

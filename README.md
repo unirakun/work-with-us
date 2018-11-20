@@ -8,3 +8,8 @@
  - `yarn`
  - `yarn build`
  - `yarn start`
+
+## Render CV
+ - `yarn`
+ - `yarn build`
+ - `yarn pdf`

@@ -6,11 +6,7 @@ import Proposals from './proposals'
 
 const Screens = () => (
   <Switch>
-    <Route
-      exact
-      path="/"
-      render={() => <CV name="fabien" />}
-    />
+    <Route exact path="/" component={Proposals} />
     <Route
       path="/fabien"
       render={() => <CV name="fabien" />}
@@ -19,7 +15,6 @@ const Screens = () => (
       path="/guillaume"
       render={() => <CV name="guillaume" />}
     />
-    <Route path="/proposals" component={Proposals} />
     <Route component={NotFound} />
   </Switch>
 )

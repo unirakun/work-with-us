@@ -35,6 +35,9 @@ const AddNewProposal = () => (
             <ErrorMessage name="contact.name" component="div" />
             <Field type="string" name="contact.name" />
 
+            <ErrorMessage name="description" component="div" />
+            <Field type="string" name="description" />
+
             <button type="submit" disabled={isSubmitting}>
               Submit!
             </button>

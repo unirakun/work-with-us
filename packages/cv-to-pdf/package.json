@@ -5,6 +5,9 @@
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "render": "node ."
+  },
   "dependencies": {
     "puppeteer": "^1.10.0"
   }

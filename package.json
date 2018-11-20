@@ -13,7 +13,10 @@
     "start:dev:ui": "BROWSER=none yarn --cwd packages/ui start",
     "build": "run-p build:*",
     "build:hocs": "yarn --cwd packages/ui-hoc build",
-    "build:ui": "yarn --cwd packages/ui build"
+    "build:ui": "yarn --cwd packages/ui build",
+    "pdf": "run-p pdf:*",
+    "pdf:server": "run-s start",
+    "pdf:render": "yarn --cwd packages/cv-to-pdf render"
   },
   "workspaces": [
     "packages/*"

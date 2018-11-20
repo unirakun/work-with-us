@@ -10,7 +10,21 @@ const resolvers = {
     proposals: () => proposals,
     cvs: (root, { name }) => {
       if (!name) return Object.values(cv)
-      return [cv[name]]
+
+      const otherCode = name === 'fabien' ? 'guillaume' : 'fabien'
+      const asked = cv[name]
+      const other = cv[otherCode]
+
+      return [
+        {
+          ...asked,
+          who: {
+            ...asked.who,
+            otherCode,
+            otherAvatar: other.who.avatar,
+          },
+        },
+      ]
     },
   },
   Mutation: {

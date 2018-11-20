@@ -7,8 +7,14 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Program",
+      "name": "api-gateway",
       "program": "${workspaceFolder}/packages/api-gateway/bootstrap"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "cv-to-pdf",
+      "program": "${workspaceFolder}/packages/cv-to-pdf/index"
     }
   ]
 }
