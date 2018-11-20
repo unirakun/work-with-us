@@ -1,21 +1,27 @@
 import chargeProjet from './chargeProjet'
 import concepteur from './concepteur'
+import darva from './darva'
 import developpeur from './developpeur'
 import ge from './ge'
 import ices from './ices'
 import maif from './maif'
 import mcomm from './mcomm'
+import metroscopeConseil from './metroscope_conseil'
+import metroscopeDev from './metroscope_dev'
 import santeclair from './santeclair'
 import sparklane from './sparklane'
 
 export default [
   chargeProjet,
   concepteur,
+  darva,
   developpeur,
   ge,
   ices,
   maif,
   mcomm,
+  metroscopeConseil,
+  metroscopeDev,
   santeclair,
   sparklane,
 ].sort((expA, expB) => {
