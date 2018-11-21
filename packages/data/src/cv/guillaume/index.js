@@ -29,6 +29,7 @@ const skills = []
 const experiences = []
 
 export default {
+  code: 'guillaume',
   who,
   description,
   skills,

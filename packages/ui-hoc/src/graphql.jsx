@@ -21,7 +21,7 @@ export default (
         return null
       }
 
-      return <Component {...props} {...mapData(data)} />
+      return <Component {...props} {...mapData(data, props)} />
     }}
   </Query>
 )

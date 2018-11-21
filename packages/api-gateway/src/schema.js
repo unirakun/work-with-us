@@ -5,26 +5,27 @@ import typeDefs from './types'
 const proposals = [
 ]
 
+const mapCV = (askedCv, othersCv) => {
+  const otherCode = askedCv.code === 'fabien' ? 'guillaume' : 'fabien'
+  const otherCv = othersCv[otherCode]
+
+  return {
+    ...askedCv,
+    who: {
+      ...askedCv.who,
+      otherCode,
+      otherAvatar: otherCv.who.avatar,
+    },
+  }
+}
+
 const resolvers = {
   Query: {
     proposals: () => proposals,
     cvs: (root, { name }) => {
-      if (!name) return Object.values(cv)
+      if (!name) return Object.values(cv).map(item => mapCV(item, cv))
 
-      const otherCode = name === 'fabien' ? 'guillaume' : 'fabien'
-      const asked = cv[name]
-      const other = cv[otherCode]
-
-      return [
-        {
-          ...asked,
-          who: {
-            ...asked.who,
-            otherCode,
-            otherAvatar: other.who.avatar,
-          },
-        },
-      ]
+      return [mapCV(cv[name], cv)]
     },
   },
   Mutation: {

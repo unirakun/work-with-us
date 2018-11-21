@@ -1,8 +1,9 @@
 import { graphql } from '@work-with-us/ui-hoc'
 import Component from './who'
 
-const request = `query getWho ($name: String!) {
-  cvs (name: $name) {
+const request = `query getWho {
+  cvs {
+    code
     who {
       name
       avatar
@@ -26,8 +27,9 @@ const request = `query getWho ($name: String!) {
   }
 }`
 
-const mapData = (data) => {
-  const { who, skills } = data.cvs[0]
+const mapData = (data, props) => {
+  const { who, skills } = (data.cvs || []).find(({ code }) => code === props.name)
+
   return {
     who,
     skills,

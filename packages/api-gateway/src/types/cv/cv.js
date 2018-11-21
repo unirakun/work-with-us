@@ -1,4 +1,5 @@
 const cv = `{
+  code: String!
   who: Who!
   description: String
   skills: [GroupSkill]!

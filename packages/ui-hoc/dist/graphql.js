@@ -44,7 +44,7 @@ var _default = function _default(query) {
           return null;
         }
 
-        return _react.default.createElement(Component, _extends({}, props, mapData(data)));
+        return _react.default.createElement(Component, _extends({}, props, mapData(data, props)));
       });
     };
   };
