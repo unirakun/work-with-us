@@ -1,6 +1,6 @@
 // TODO:
 const who = {
-  avatar: 'https://avatars0.githubusercontent.com/u/26094222?s=400&v=4',
+  avatar: '/guillaume.png',
   name: 'Guillaume CRESPEL',
   what: 'Javascript developer - Fullstack',
   birthday: Date.UTC(1988, 5, 13),

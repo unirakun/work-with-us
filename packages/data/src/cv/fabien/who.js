@@ -1,5 +1,5 @@
 export default {
-  avatar: 'https://avatars2.githubusercontent.com/u/17828231?s=460&v=4',
+  avatar: '/fabien.png',
   name: 'Fabien JUIF',
   what: 'Javascript developer - Fullstack',
   birthday: Date.UTC(1988, 3, 25),
