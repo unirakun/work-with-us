@@ -1,0 +1,41 @@
+version: 2
+jobs:
+  deploy:
+    machine: true
+    steps:
+      - checkout
+      - run: echo "TODO:"
+      # - run: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+      # - run: make -j2 build-push
+      # - run: curl ${DEPLOY_URL}
+
+  build:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+          - dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+          - dependencies-
+      - run: yarn
+      - save_cache:
+          paths:
+            - node_modules
+            - ~/.cache/yarn
+          key: dependencies-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+      - run: yarn lint
+
+workflows:
+  version: 2
+  common:
+    jobs:
+       - build
+       - deploy:
+          filters:
+            branches:
+              only:
+               - master
+               - deploy
+          requires:
+            - build
