@@ -30,5 +30,7 @@ export default styled(CompagnyLogo)`
     height: 1.5em;
     background-image: url('${getBackgroundUrl}.png');
     background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 `
