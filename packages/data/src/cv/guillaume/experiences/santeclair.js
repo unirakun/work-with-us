@@ -5,7 +5,7 @@ export default {
     color: 'white',
   },
   dates: {
-    from: Date.UTC(2016, 10),
+    from: Date.UTC(2016, 5),
     to: Date.UTC(2018, 0),
   },
   informations: [
