@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
 
     <meta charset="utf-8">
@@ -13,6 +12,15 @@
     <!-- DON'T REMOVE NEXT LINE, it's needed SSR css -->
     <style data-src="server-css"></style>
     <style>
+      @font-face {
+        font-family: 'Muli';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Muli Regular'), local('Muli-Regular'),
+            url('%PUBLIC_URL%/fonts/muli-v12-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+            url('%PUBLIC_URL%/fonts/muli-v12-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+      }
+
       body {
         font-family: 'Muli', sans-serif;
         margin: 0;
