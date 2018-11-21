@@ -1,1 +1,2 @@
-export { default as graphql } from './graphql' // eslint-disable-line import/prefer-default-export
+export { default as graphql } from './graphql'
+export { default as queryOnMouseEnter } from './queryOnMouseEnter'

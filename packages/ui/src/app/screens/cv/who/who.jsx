@@ -4,6 +4,7 @@ import { lifecycle } from 'recompact'
 import { NavLink } from 'react-router-dom'
 import { Avatar, Social, Age, Background } from '../../../../components'
 import Skills from './skills'
+import OtherAvatar from './otherAvatar.container'
 
 const Who = ({ className, who, skills }) => {
   const {
@@ -21,7 +22,10 @@ const Who = ({ className, who, skills }) => {
     <Background className={className} gradient>
       <Avatar src={avatar} />
       <NavLink to={`/${otherCode}`} className="other">
-        <Avatar src={otherAvatar} />
+        <OtherAvatar
+          src={otherAvatar}
+          name={otherCode}
+        />
       </NavLink>
 
       <div className="description">
