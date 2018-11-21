@@ -1,5 +1,5 @@
 const getId = (item) => {
-  if (Array.isArray(item)) return getId(item[0])
+  if (Array.isArray(item)) return `${getId(item[0])}-array`
   return `${item.title}-${item.dates.from}`
 }
 

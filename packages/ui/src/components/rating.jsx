@@ -10,7 +10,7 @@ const Label = styled.label`
 const Rating = ({ className, name, children }) => (
   <div className={className}>
     <Label>{name}</Label>
-    <Stars>{children}</Stars>
+    <Stars name={name}>{children}</Stars>
   </div>
 )
 
