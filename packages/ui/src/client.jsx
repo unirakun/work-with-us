@@ -26,3 +26,5 @@ ReactDOM.hydrate(
   </ApolloProvider>,
   document.getElementById('root'),
 )
+
+require('./serviceWorker')
