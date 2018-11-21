@@ -4,10 +4,10 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: echo "TODO:"
-      # - run: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
-      # - run: make -j2 build-push
-      # - run: curl ${DEPLOY_URL}
+      - run: docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}
+      - run: docker build -t alakarte/work-with-us .
+      - run: docker push alakarte/work-with-us
+      - run: curl ${DEPLOY_URL}
 
   build:
     docker:
