@@ -1,5 +1,5 @@
 import React from 'react'
-import { gql } from 'apollo-boost'
+import gql from 'graphql-tag'
 import { Mutation } from 'react-apollo'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 
@@ -11,7 +11,7 @@ const AddNewProposal = () => (
       }
     `}
   >
-    {(addProposal) => (
+    {addProposal => (
       <Formik
         onSubmit={(values, { setSubmitting }) => {
           addProposal({ variables: { input: values } })
@@ -34,6 +34,9 @@ const AddNewProposal = () => (
 
             <ErrorMessage name="contact.name" component="div" />
             <Field type="string" name="contact.name" />
+
+            <ErrorMessage name="description" component="div" />
+            <Field type="string" name="description" />
 
             <button type="submit" disabled={isSubmitting}>
               Submit!

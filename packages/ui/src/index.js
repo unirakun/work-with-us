@@ -1,14 +1,8 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import ApolloClient from 'apollo-boost'
-import { ApolloProvider } from 'react-apollo'
 import App from './app'
+import theme from './theme'
 
-const client = new ApolloClient({})
+if (typeof window !== 'undefined') {
+  import('./client')
+}
 
-ReactDOM.render(
-  <ApolloProvider client={client}>
-    <App />
-  </ApolloProvider>,
-  document.getElementById('root'),
-)
+export { App, theme }

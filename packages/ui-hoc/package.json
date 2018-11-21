@@ -1,0 +1,30 @@
+{
+  "name": "@work-with-us/ui-hoc",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "module": "dist/index.js",
+  "author": "Fabien JUIF <fabien.juif@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "babel src --source-type module --out-dir dist"
+  },
+  "dependencies": {
+    "graphql-tag": "^2.10.0",
+    "react": "^16.0.0",
+    "react-apollo": "^2.2.4",
+    "react-dom": "^16.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
+    "@babel/preset-react": "^7.0.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  }
+}

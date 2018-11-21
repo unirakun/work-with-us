@@ -1,0 +1,14 @@
+{
+  "name": "@work-with-us/cv-to-pdf",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Fabien JUIF <fabien.juif@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "render": "node ."
+  },
+  "dependencies": {
+    "puppeteer": "^1.10.0"
+  }
+}
