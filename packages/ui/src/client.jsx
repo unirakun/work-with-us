@@ -27,4 +27,4 @@ ReactDOM.hydrate(
   document.getElementById('root'),
 )
 
-require('./serviceWorker')
+require('./serviceWorker').register()
