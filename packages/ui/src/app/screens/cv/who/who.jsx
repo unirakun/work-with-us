@@ -2,19 +2,19 @@ import React from 'react'
 import styled from 'styled-components'
 import { lifecycle } from 'recompact'
 import { NavLink } from 'react-router-dom'
-import { Avatar, Social, Age, Background } from '../../../../components'
+import { Avatar, Background, Age, Social } from '../../../../components'
 import Skills from './skills'
 
-const Who = ({ className, who, skills }) => {
+const Who = ({ className, who = {}, skills = [] }) => {
   const {
     avatar,
     otherAvatar,
-    name,
+    name = '...',
     otherCode,
-    what,
+    what = '...',
     birthday,
     worksSince,
-    socials,
+    socials = [],
   } = who
 
   return (
@@ -46,6 +46,7 @@ const Who = ({ className, who, skills }) => {
 }
 
 const StyledWho = styled(Who)`
+  min-height: 20em;
   grid-area: who;
   padding-top: 4em;
   padding-bottom: 4em;

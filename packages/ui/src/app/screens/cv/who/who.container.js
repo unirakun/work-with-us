@@ -26,12 +26,18 @@ const request = `query getWho ($name: String!) {
   }
 }`
 
-const mapData = (data) => {
-  const { who, skills } = data.cvs[0]
+const mapData = (data, { loading }) => {
+  if (loading) return {}
+
+  const {
+    who,
+    skills,
+  } = data.cvs[0]
+
   return {
     who,
     skills,
   }
 }
 
-export default graphql(request, mapData)(Component)
+export default graphql(request, { mapData })(Component)
