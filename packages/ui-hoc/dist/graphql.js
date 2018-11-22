@@ -25,26 +25,33 @@ var defaultMapToVariables = function defaultMapToVariables(props) {
 };
 
 var _default = function _default(query) {
-  var mapData = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultMapData;
-  var mapToVariables = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : defaultMapToVariables;
+  var _ref2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+      _ref2$mapData = _ref2.mapData,
+      mapData = _ref2$mapData === void 0 ? defaultMapData : _ref2$mapData,
+      _ref2$mapToVariables = _ref2.mapToVariables,
+      mapToVariables = _ref2$mapToVariables === void 0 ? defaultMapToVariables : _ref2$mapToVariables,
+      _ref2$wait = _ref2.wait,
+      wait = _ref2$wait === void 0 ? false : _ref2$wait;
+
   return function (Component) {
     return function (props) {
       return _react.default.createElement(_reactApollo.Query, {
         query: (0, _graphqlTag.default)(query),
         variables: mapToVariables(props)
-      }, function (_ref2) {
-        var loading = _ref2.loading,
-            error = _ref2.error,
-            data = _ref2.data;
-        if (loading) return null; // TODO: loading indicator
+      }, function (_ref3) {
+        var loading = _ref3.loading,
+            error = _ref3.error,
+            data = _ref3.data;
+        if (loading && wait) return null; // TODO: loading indicator
 
         if (error) {
           console.trace(new Error(error)); // TODO: error handler
-
-          return null;
         }
 
-        return _react.default.createElement(Component, _extends({}, props, mapData(data)));
+        if (loading) return _react.default.createElement(Component, props);
+        return _react.default.createElement(Component, _extends({}, props, mapData(data, {
+          loading: loading
+        })));
       });
     };
   };

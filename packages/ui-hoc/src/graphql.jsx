@@ -7,21 +7,24 @@ const defaultMapToVariables = props => props
 
 export default (
   query,
-  mapData = defaultMapData,
-  mapToVariables = defaultMapToVariables,
+  {
+    mapData = defaultMapData,
+    mapToVariables = defaultMapToVariables,
+    wait = false,
+  } = {},
 ) => Component => props => (
   <Query
     query={gql(query)}
     variables={mapToVariables(props)}
   >
     {({ loading, error, data }) => {
-      if (loading) return null // TODO: loading indicator
+      if (loading && wait) return null // TODO: loading indicator
       if (error) {
         console.trace(new Error(error)) // TODO: error handler
-        return null
       }
 
-      return <Component {...props} {...mapData(data)} />
+      if (loading) return <Component {...props} />
+      return <Component {...props} {...mapData(data, { loading })} />
     }}
   </Query>
 )

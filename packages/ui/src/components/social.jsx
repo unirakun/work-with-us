@@ -18,7 +18,7 @@ const Social = ({ className, name, url }) => {
     >
       <StyledSocialLogo icon={name} size={36} />
       <span>
-        {name === 'twitter' && '@'}
+        {(name === 'twitter' && pseudo) && '@'}
         {pseudo}
       </span>
     </a>
@@ -28,6 +28,7 @@ const Social = ({ className, name, url }) => {
 export default styled(Social)`
   display: flex;
   align-items: center;
+  min-width: 11em;
   color: ${({ theme }) => theme.light};
 
   & span {
