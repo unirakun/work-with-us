@@ -20,9 +20,10 @@ const Who = ({ className, name, who, skills }) => {
 
   return (
     <Background className={className} gradient>
-      <Avatar src={avatar || `/${name}.png`} />
+      <Avatar className="avatar" src={avatar || `/${name}.png`} />
       <NavLink to={`/${otherCode}`} className="other">
         <OtherAvatar
+          className="avatar"
           src={otherAvatar}
           name={otherCode}
         />
@@ -100,7 +101,7 @@ const StyledWho = styled(Who)`
       display: none;
     }
 
-    & > ${Avatar} {
+    & > .avatar {
       opacity: 0.3;
 
       &:hover {
@@ -109,7 +110,7 @@ const StyledWho = styled(Who)`
     }
   }
 
-  & > ${Avatar} {
+  & > .avatar {
     grid-area: avatar;
     justify-self: end;
     margin: 0 3em;
