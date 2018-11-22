@@ -2,7 +2,7 @@ const proposal = (isInput) => {
   const prefix = isInput ? 'Input' : ''
 
   return `{
-    ${isInput ? '' : '_id: String!'}
+    ${isInput ? '' : 'id: String!'}
     ${isInput ? '' : 'date: Float!'}
     title: String!
     dailyRate: Int

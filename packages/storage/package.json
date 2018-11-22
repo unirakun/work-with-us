@@ -1,0 +1,11 @@
+{
+  "name": "@work-with-us/storage",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "author": "Fabien JUIF <fabien.juif@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "pouchdb": "^7.0.0"
+  }
+}

@@ -1,12 +1,10 @@
 import { makeExecutableSchema } from 'graphql-tools'
+import makeProposals from '@work-with-us/api-proposals'
 import { cv } from '@work-with-us/data'
 import typeDefs from './types'
-import resources from './resources'
 
 module.exports = () => {
-  const {
-    proposals,
-  } = resources()
+  const proposals = makeProposals()
 
   const resolvers = {
     Query: {
