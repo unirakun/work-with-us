@@ -21,7 +21,9 @@ const list = database => async () => {
   }))
 }
 
-module.exports = (resourceName, options = {}) => () => {
+let databases = []
+
+export const create = (resourceName, options = {}) => () => {
   const { DB_PATH } = process.env
   if (!DB_PATH) throw new Error('Please set DB_PATH!')
 
@@ -34,9 +36,16 @@ module.exports = (resourceName, options = {}) => () => {
       ...options,
     },
   )
+  databases.push(database)
 
   return {
     add: add(database, resourceName),
     list: list(database, resourceName),
   }
+}
+
+export const closeAll = async () => {
+  console.log(`closing all ${databases.length} databases...`)
+  await Promise.all(databases.map(db => db.close()))
+  databases = []
 }

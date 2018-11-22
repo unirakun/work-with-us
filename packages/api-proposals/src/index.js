@@ -1,3 +1,3 @@
-import storage from '@work-with-us/storage'
+import { create } from '@work-with-us/storage'
 
-export default storage('proposals')
+export default create('proposals')

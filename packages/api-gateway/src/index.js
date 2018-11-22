@@ -4,6 +4,7 @@ const serve = require('koa-static')
 const compress = require('koa-compress')
 const conditional = require('koa-conditional-get')
 const etag = require('koa-etag')
+const { closeAll } = require('@work-with-us/storage')
 const GraphQL = require('./graphql')
 
 const app = new Koa()
@@ -76,8 +77,11 @@ const server = app.listen(port, host, () => {
   console.timeEnd('start-server')
 })
 
-const interrupt = sigName => () => {
+const interrupt = sigName => async () => {
   console.warn(`caught interrupt signal -${sigName}-`) // eslint-disable-line no-console
+
+  await closeAll()
+
   console.debug('closing HTTP socket...') // eslint-disable-line no-console
   server.close(() => {
     process.exit(0)
