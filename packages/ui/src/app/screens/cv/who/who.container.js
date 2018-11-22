@@ -2,9 +2,7 @@ import { graphql } from '@work-with-us/ui-hoc'
 import Component from './who'
 import request from './who.request'
 
-const mapData = (data, { loading }) => {
-  if (loading) return {}
-
+const mapData = (data) => {
   const {
     who,
     skills,

@@ -48,6 +48,7 @@ var _default = function _default(query) {
           console.trace(new Error(error)); // TODO: error handler
         }
 
+        if (loading) return _react.default.createElement(Component, props);
         return _react.default.createElement(Component, _extends({}, props, mapData(data, {
           loading: loading
         })));

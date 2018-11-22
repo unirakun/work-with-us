@@ -23,6 +23,7 @@ export default (
         console.trace(new Error(error)) // TODO: error handler
       }
 
+      if (loading) return <Component {...props} />
       return <Component {...props} {...mapData(data, { loading })} />
     }}
   </Query>
