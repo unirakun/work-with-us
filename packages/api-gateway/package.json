@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "start": "node .",
-    "start:dev": "nodemon ."
+    "start:dev": "DB_PATH=$(pwd)/../../db nodemon ."
   },
   "dependencies": {
     "@babel/core": "^7.1.2",
@@ -32,6 +32,7 @@
     "koa-etag": "^3.0.0",
     "koa-static": "^5.0.0",
     "koa-static-cache": "^5.1.2",
+    "pouchdb": "^7.0.0",
     "react": "^16.0.0",
     "react-apollo": "^2.2.4",
     "react-router-dom": "^4.3.1",
