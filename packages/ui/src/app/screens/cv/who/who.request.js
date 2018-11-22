@@ -1,7 +1,7 @@
 export default `query getWho ($name: String!) {
   cvs (name: $name) {
     who {
-      name
+      fullName
       avatar
       otherCode
       otherAvatar

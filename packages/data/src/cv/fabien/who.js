@@ -1,6 +1,6 @@
 export default {
   avatar: '/fabien.png',
-  name: 'Fabien JUIF',
+  fullName: 'Fabien JUIF',
   what: 'Javascript developer - Fullstack',
   birthday: Date.UTC(1988, 3, 25),
   worksSince: Date.UTC(2010, 8, 1),

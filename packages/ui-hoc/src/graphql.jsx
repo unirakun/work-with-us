@@ -21,7 +21,6 @@ export default (
       if (loading && wait) return null // TODO: loading indicator
       if (error) {
         console.trace(new Error(error)) // TODO: error handler
-        return null
       }
 
       return <Component {...props} {...mapData(data, { loading })} />

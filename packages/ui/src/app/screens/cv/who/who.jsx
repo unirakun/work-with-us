@@ -6,21 +6,21 @@ import { Avatar, Background, Age, Social } from '../../../../components'
 import Skills from './skills'
 import OtherAvatar from './otherAvatar.container'
 
-const Who = ({ className, who = {}, skills = [] }) => {
+const Who = ({ className, name, who, skills }) => {
   const {
     avatar,
     otherAvatar,
-    name = '...',
+    fullName,
     otherCode,
-    what = '...',
+    what,
     birthday,
     worksSince,
-    socials = [],
+    socials,
   } = who
 
   return (
     <Background className={className} gradient>
-      <Avatar src={avatar} />
+      <Avatar src={avatar || `/${name}.png`} />
       <NavLink to={`/${otherCode}`} className="other">
         <OtherAvatar
           src={otherAvatar}
@@ -29,7 +29,7 @@ const Who = ({ className, who = {}, skills = [] }) => {
       </NavLink>
 
       <div className="description">
-        <h1>{name}</h1>
+        <h1>{fullName || name}</h1>
         <h2>{what}</h2>
       </div>
 
@@ -47,6 +47,23 @@ const Who = ({ className, who = {}, skills = [] }) => {
       <div id="particles-js" />
     </Background>
   )
+}
+
+Who.defaultProps = {
+  who: {
+    socials: [
+      {
+        name: 'twitter',
+      },
+      {
+        name: 'github',
+      },
+      {
+        name: 'linkedin',
+      },
+    ],
+  },
+  skills: [],
 }
 
 const StyledWho = styled(Who)`
@@ -104,6 +121,7 @@ const StyledWho = styled(Who)`
 
   & > .age-experience {
     grid-area: age-experience;
+    min-height: 1em;
   }
 
   & > .socials {
