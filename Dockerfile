@@ -1,5 +1,7 @@
 FROM node:alpine
 
+ENV DB_PATH=/db
+
 WORKDIR /app
 COPY . .
 RUN echo "installing building tools for leveldown dependency" \
@@ -18,7 +20,8 @@ RUN echo "installing building tools for leveldown dependency" \
     && echo "removing yarn cache" \
     && yarn cache clean \
     && echo "removing building tools" \
-    && apk del .gyp
+    && apk del .gyp \
+    && mkdir ${DB_PATH}
 
 ENV NODE_ENV=production
 CMD [ "node", "packages/api-gateway" ]
