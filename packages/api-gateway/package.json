@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "start": "node .",
-    "start:dev": "nodemon ."
+    "start:dev": "DB_PATH=$(pwd)/../../db nodemon ."
   },
   "dependencies": {
     "@babel/core": "^7.1.2",
@@ -15,7 +15,9 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "@work-with-us/api-proposals": "^1.0.0",
     "@work-with-us/data": "^1.0.0",
+    "@work-with-us/storage": "^1.0.0",
     "@work-with-us/ui": "^1.0.0",
     "apollo-cache-inmemory": "^1.0.0",
     "apollo-client": "^2.4.4",
