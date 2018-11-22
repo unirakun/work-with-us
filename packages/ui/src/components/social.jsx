@@ -28,7 +28,6 @@ const Social = ({ className, name, url }) => {
 export default styled(Social)`
   display: flex;
   align-items: center;
-  min-width: 11em;
   color: ${({ theme }) => theme.light};
 
   & span {

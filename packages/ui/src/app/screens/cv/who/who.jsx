@@ -75,12 +75,12 @@ const StyledWho = styled(Who)`
   display: grid;
   align-items: center;
   position: relative;
-  grid-template-columns: 1vw 10em auto 1fr auto auto 1vw;
+  grid-template-columns: 5em 10em auto 1fr auto auto 5em;
   grid-template-rows: 3em 3em 3em 3em auto;
   grid-template-areas:
-    ". socials avatar . . other-avatar ."
-    ". socials avatar description contacts other-avatar ."
-    ". socials avatar age-experience contacts . ."
+    ". socials avatar . . . ."
+    ". socials avatar description . . ."
+    ". socials avatar age-experience . . ."
     ". socials avatar . . . ."
     "skills skills skills skills skills skills skills";
 
@@ -93,7 +93,6 @@ const StyledWho = styled(Who)`
   }
 
   & > .other {
-    grid-area: other-avatar;
     font-size: 0.5em;
     cursor: pointer;
 
@@ -103,6 +102,9 @@ const StyledWho = styled(Who)`
 
     & > .avatar {
       opacity: 0.3;
+      position: absolute;
+      top: 1em;
+      right: 1em;
 
       &:hover {
         opacity: 1;
@@ -128,6 +130,7 @@ const StyledWho = styled(Who)`
   & > .socials {
     grid-area: socials;
     justify-self: end;
+    min-width: 12em;
 
     & > *:not(:first-child) {
       margin-top: 1em;
@@ -138,16 +141,41 @@ const StyledWho = styled(Who)`
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: auto;
     grid-template-areas:
-      ". socials avatar other-avatar"
+      ". socials avatar ."
       "description description description description"
       "age-experience age-experience age-experience age-experience"
-      "contacts contacts contacts contacts"
       "skills skills skills skills";
     text-align: center;
 
-    & ${Avatar} {
+    & > .avatar {
       justify-self: end;
       margin-left: 3em;
+    }
+  }
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas:
+      "socials avatar avatar ."
+      "description description description description"
+      "age-experience age-experience age-experience age-experience"
+      "skills skills skills skills";
+
+    & > .socials {
+      min-width: inherit;
+      justify-self: start;
+      margin-left: 1em;
+
+      & > a {
+        & > span {
+          display: none;
+        }
+      }
+    }
+
+    & > .avatar {
+      justify-self: center;
     }
   }
 
