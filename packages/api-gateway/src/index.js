@@ -47,7 +47,7 @@ app.use(async (ctx, next) => {
 
   if (ctx.status >= 200 && ctx.status < 400) {
     const contentType = ctx.response.headers['content-type'].replace(/; charset=.*?$/, '')
-    const cacheControl = `max-age ${getMaxAge(contentType)}`
+    const cacheControl = `max-age=${getMaxAge(contentType)}`
 
     ctx.set('Cache-Control', cacheControl)
   }
