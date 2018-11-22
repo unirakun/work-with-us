@@ -9,6 +9,7 @@ const Skills = ({ className, children }) => (
 )
 
 export default styled(Skills)`
+  min-height: 10em;
   grid-area: skills;
   background-color: #0006;
   color: ${({ theme }) => theme.light};

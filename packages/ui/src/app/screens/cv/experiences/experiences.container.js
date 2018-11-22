@@ -32,4 +32,4 @@ const request = `query getExperiences ($name: String!) {
 
 const mapData = data => ({ children: data.cvs[0].experiences })
 
-export default graphql(request, mapData)(Component)
+export default graphql(request, { mapData, wait: true })(Component)
