@@ -23,7 +23,7 @@ const list = database => async () => {
 }
 
 export default () => {
-  const database = new PouchDB(`${DB_PATH}/proposals`)
+  const database = new PouchDB(`${DB_PATH}/proposals`, { auto_compaction: true })
 
   return {
     add: add(database),
