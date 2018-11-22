@@ -80,10 +80,10 @@ const server = app.listen(port, host, () => {
 const interrupt = sigName => async () => {
   console.warn(`caught interrupt signal -${sigName}-`) // eslint-disable-line no-console
 
-  await closeAll()
-
   console.debug('closing HTTP socket...') // eslint-disable-line no-console
-  server.close(() => {
+  server.close(async () => {
+    await closeAll()
+
     process.exit(0)
   })
 }
