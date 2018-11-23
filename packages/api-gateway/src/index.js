@@ -5,6 +5,7 @@ const compress = require('koa-compress')
 const conditional = require('koa-conditional-get')
 const etag = require('koa-etag')
 const { closeAll } = require('@work-with-us/storage')
+const logger = require('@work-with-us/logger')
 const GraphQL = require('./graphql')
 
 const app = new Koa()
@@ -21,7 +22,7 @@ app.use(compress({
     if (contentType === 'application/javascript') return true
     if (contentType === 'application/json') return true
 
-    console.log('This content type is not compressed : ', contentType)
+    logger.log('This content type is not compressed', contentType)
 
     return false
   },
@@ -38,7 +39,7 @@ const getMaxAge = (contentType) => {
   if (contentType === 'application/javascript') return ONE_WEEK_CACHE
   if (contentType === 'application/json') return ONE_DAY_CACHE
 
-  console.log('This content type is not cached : ', contentType)
+  logger.log('This content type is not cached', contentType)
 
   return 0
 }
@@ -84,15 +85,15 @@ const port = 4000
 const host = '::'
 
 const server = app.listen(port, host, () => {
-  console.log(`🚀 Server ready at http://${host}:${port}${graphql.graphqlPath}`)
-  console.log(`🍛 Serving ${staticPath}`)
-  console.timeEnd('start-server')
+  logger.timeEnd('server ready')
+  logger.info('🍛  ', staticPath)
+  logger.info('🚀  listening', `http://${host}:${port}${graphql.graphqlPath}`)
 })
 
 const interrupt = sigName => async () => {
-  console.warn(`caught interrupt signal -${sigName}-`) // eslint-disable-line no-console
+  logger.warn('caught interrupt signal', sigName) // eslint-disable-line no-console
 
-  console.debug('closing HTTP socket...') // eslint-disable-line no-console
+  logger.debug('closing HTTP socket...') // eslint-disable-line no-console
   server.close(() => {
     closeAll(() => {
       process.exit(0)

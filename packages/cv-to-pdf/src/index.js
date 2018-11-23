@@ -1,7 +1,8 @@
+const logger = require('@work-with-us/logger')
 const puppeteer = require('puppeteer')
 
 const render = async (page, name) => {
-  await page.goto(`http://localhost:4000/${name}`)
+  await page.goto(`https://work-with-us.alakarte.io/${name}`)
   await page.evaluate(() => {
     root.style.fontSize = '20px' // eslint-disable-line no-undef
   })
@@ -38,7 +39,7 @@ const withRetry = (callback, args) => async (times) => {
     if (ex.message.includes('net::ERR_CONNECTION_REFUSED')) {
       await delay(500)
 
-      console.log('Retry !', times)
+      logger.debug('retry!', times)
       const res = await withRetry(callback, args)(times - 1)
 
       return res
@@ -64,7 +65,7 @@ run()
   .then(
     undefined,
     (err) => {
-      console.trace(err)
+      logger.trace(err)
       process.exit(-1)
     },
   )

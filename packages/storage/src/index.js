@@ -1,4 +1,5 @@
-import PouchDB from 'pouchdb'
+const PouchDB = require('pouchdb')
+const logger = require('@work-with-us/logger')
 
 const add = (database, resourceName) => async (resource) => {
   await database.put({
@@ -23,7 +24,7 @@ const list = database => async () => {
 
 const databases = new Map()
 
-export const create = (resourceName, options = {}) => () => {
+const create = (resourceName, options = {}) => () => {
   const { DB_PATH } = process.env
   if (!DB_PATH) throw new Error('Please set DB_PATH!')
 
@@ -31,7 +32,7 @@ export const create = (resourceName, options = {}) => () => {
   let database = databases.get(resourceName)
 
   if (database) {
-    console.log(`Using existing database for ${resourceName}`)
+    logger.debug('using existing database', resourceName)
   } else {
     database = new PouchDB(
       `${DB_PATH}/${resourceName}`,
@@ -49,8 +50,8 @@ export const create = (resourceName, options = {}) => () => {
   }
 }
 
-export const closeAll = async (cb) => {
-  console.log(`closing all ${databases.size} databases...`)
+const closeAll = async (cb) => {
+  logger.info('closing all databases...', databases.length)
 
   const databasesToClose = Array.from(databases.values())
 
@@ -58,4 +59,9 @@ export const closeAll = async (cb) => {
   await Promise.all(databasesToClose.map(db => db.close()))
 
   if (cb) cb()
+}
+
+module.exports = {
+  create,
+  closeAll,
 }
