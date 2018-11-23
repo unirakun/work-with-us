@@ -1,4 +1,11 @@
-console.time('start-server')
+process.on('unhandledRejection', (reason) => {
+  console.log(reason)
+  console.error(reason)
+  console.trace()
+})
+
+console.time('server ready')
+
 require('ignore-styles')
 
 require('@babel/register')({

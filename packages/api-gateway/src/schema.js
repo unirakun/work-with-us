@@ -1,6 +1,7 @@
 import { makeExecutableSchema } from 'graphql-tools'
 import makeProposals from '@work-with-us/api-proposals'
 import { cv } from '@work-with-us/data'
+import logger from '@work-with-us/logger'
 import typeDefs from './types'
 
 module.exports = () => {
@@ -13,7 +14,7 @@ module.exports = () => {
         try {
           res = await proposals.list()
         } catch (ex) {
-          console.error(ex)
+          logger.error(ex)
           throw ex
         }
 
@@ -43,7 +44,7 @@ module.exports = () => {
         try {
           await proposals.add(input)
         } catch (ex) {
-          console.error(ex)
+          logger.error(ex)
           return false
         }
 
@@ -52,6 +53,6 @@ module.exports = () => {
     },
   }
 
-  console.log('creating graphql executable schema')
+  logger.info('creating graphql executable schema')
   return makeExecutableSchema({ typeDefs, resolvers })
 }

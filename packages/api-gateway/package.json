@@ -17,6 +17,7 @@
     "@babel/register": "^7.0.0",
     "@work-with-us/api-proposals": "^1.0.0",
     "@work-with-us/data": "^1.0.0",
+    "@work-with-us/logger": "^1.0.0",
     "@work-with-us/storage": "^1.0.0",
     "@work-with-us/ui": "^1.0.0",
     "apollo-cache-inmemory": "^1.0.0",
