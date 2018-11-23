@@ -1,4 +1,5 @@
 const chalk = require('chalk')
+
 const { prepareStackTrace } = Error
 
 // base code from: https://stackoverflow.com/questions/16697791/nodejs-get-filename-of-caller-function

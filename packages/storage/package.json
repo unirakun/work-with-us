@@ -6,6 +6,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "@work-with-us/logger": "^1.0.0",
     "pouchdb": "^7.0.0"
   }
 }
