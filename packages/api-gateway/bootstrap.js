@@ -1,10 +1,6 @@
-process.on('unhandledRejection', (reason) => {
-  console.log(reason)
-  console.error(reason)
-  console.trace()
-})
+const logger = require('@work-with-us/logger')
 
-console.time('server ready')
+logger.time('server ready')
 
 require('ignore-styles')
 

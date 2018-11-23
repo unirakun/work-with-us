@@ -85,9 +85,9 @@ const port = 4000
 const host = '::'
 
 const server = app.listen(port, host, () => {
-  logger.info('🚀  listing', `http://${host}:${port}${graphql.graphqlPath}`)
+  logger.timeEnd('server ready')
   logger.info('🍛  ', staticPath)
-  console.timeEnd('server ready')
+  logger.info('🚀  listening', `http://${host}:${port}${graphql.graphqlPath}`)
 })
 
 const interrupt = sigName => async () => {

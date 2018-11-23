@@ -1,33 +1,15 @@
 const chalk = require('chalk')
 
-const { prepareStackTrace } = Error
-
-// base code from: https://stackoverflow.com/questions/16697791/nodejs-get-filename-of-caller-function
+// base code from: https://github.com/klaussinani/signale/blob/master/signale.js#L60
 const getCallerFile = () => {
-  try {
-    let callerfile
+  const _ = Error.prepareStackTrace
+  Error.prepareStackTrace = (error, stack) => stack
+  const { stack } = new Error()
+  Error.prepareStackTrace = _
 
-    let savedStack
-    Error.prepareStackTrace = (_, stack) => {
-      savedStack = stack
-      return prepareStackTrace(_, stack)
-    }
+  const callers = stack.map(x => x.getFileName())
 
-    // trigger an error so we can capture the stack
-    new Error().stack // eslint-disable-line no-unused-expressions
-
-    const currentfile = savedStack.shift().getFileName()
-
-    while (savedStack.length) {
-      callerfile = savedStack.shift().getFileName()
-
-      if (currentfile !== callerfile) return callerfile
-    }
-  } catch (err) { /* ignore error */ }
-
-  Error.prepareStackTrace = prepareStackTrace
-
-  return undefined
+  return callers.find(x => x !== callers[0])
 }
 
 const dynamicPad = (callback) => {
@@ -68,10 +50,21 @@ const printMessage = (message, dynamic) => {
   process.stdout.write(`${getLogPrefix()} ${message}${getDynamicStr(dynamic)}\n`)
 }
 
+const timers = new Map()
+const time = (timerName) => {
+  timers.set(timerName, Date.now())
+}
+
+const timeEnd = (timerName) => {
+  const timer = timers.get(timerName)
+  printMessage(timerName, `${Date.now() - timer}ms`)
+  timers.delete(timer)
+}
+
 module.exports = ({
   ...console,
-  // time: console.time,
-  // timeEnd: console.timeEnd,
+  time,
+  timeEnd,
   warn: printMessage,
   debug: printMessage,
   trace: printMessage,
