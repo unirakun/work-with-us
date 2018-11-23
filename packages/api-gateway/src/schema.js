@@ -8,7 +8,17 @@ module.exports = () => {
 
   const resolvers = {
     Query: {
-      proposals: () => proposals.list(),
+      proposals: async () => {
+        let res
+        try {
+          res = await proposals.list()
+        } catch (ex) {
+          console.error(ex)
+          throw ex
+        }
+
+        return res
+      },
       cvs: (root, { name }) => {
         if (!name) return Object.values(cv)
 
@@ -42,5 +52,6 @@ module.exports = () => {
     },
   }
 
+  console.log('creating graphql executable schema')
   return makeExecutableSchema({ typeDefs, resolvers })
 }

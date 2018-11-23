@@ -26,6 +26,7 @@ const getQuery = (
         if (loading && wait) return null // TODO: loading indicator
         if (error) {
           console.trace(new Error(error)) // TODO: error handler
+          return null
         }
 
         if (loading) return <Component {...props} />

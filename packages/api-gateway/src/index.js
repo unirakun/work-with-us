@@ -55,18 +55,30 @@ app.use(async (ctx, next) => {
 })
 
 app.use(async (ctx, next) => {
+  // bypass static serving when the client ask for root page
+  // because it should be render by react
+  // we should not return the empty html (elsewise the SSR doesn't take place)
+  if (ctx.path === '/') {
+    await next()
+    return
+  }
+
+  // in other cases we serve statics files
+  // compression and max age are set by an other middleware
+  await serve(
+    staticPath,
+    {
+      maxAge: 0,
+      br: false,
+      gzip: false,
+    },
+  )(ctx, next)
+})
+
+app.use(async (ctx, next) => {
   const react = require('./react') // eslint-disable-line global-require
   return react(ctx, next)
 })
-
-app.use(serve(
-  staticPath,
-  {
-    maxAge: 0,
-    br: false,
-    gzip: false,
-  },
-))
 
 const port = 4000
 const host = '::'
@@ -81,10 +93,10 @@ const interrupt = sigName => async () => {
   console.warn(`caught interrupt signal -${sigName}-`) // eslint-disable-line no-console
 
   console.debug('closing HTTP socket...') // eslint-disable-line no-console
-  server.close(async () => {
-    await closeAll()
-
-    process.exit(0)
+  server.close(() => {
+    closeAll(() => {
+      process.exit(0)
+    })
   })
 }
 ['SIGUSR1', 'SIGINT', 'SIGTERM', 'SIGPIPE', 'SIGHUP', 'SIGBREAK'].forEach((sigName) => {

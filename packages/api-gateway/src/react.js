@@ -11,13 +11,22 @@ import { StaticRouter } from 'react-router-dom'
 import { promisify } from 'util'
 import path from 'path'
 import fs from 'fs'
-import schema from './schema'
+import createSchema from './schema'
 import cache from './cache'
 
-const filePath = path.resolve(__dirname, '..', '..', 'ui', 'build', 'index.html')
 let htmlData
+let htmlDataPromise
+const loadHtmlData = () => {
+  if (!htmlDataPromise) {
+    const filePath = path.resolve(__dirname, '..', '..', 'ui', 'build', 'index.html')
+    htmlDataPromise = promisify(fs.readFile)(filePath, 'utf8')
+  }
+
+  return htmlDataPromise
+}
 
 const renderCache = cache({ name: 'render-cache' })
+let schema
 
 module.exports = async (ctx, next) => {
   const cachedItem = renderCache.get(ctx.path)
@@ -25,10 +34,15 @@ module.exports = async (ctx, next) => {
     ctx.body = cachedItem
     return
   }
+  console.log(`serving ${ctx.path} (not cached)`)
 
   if (!htmlData) {
-    console.log('Loading html base file...')
-    htmlData = await promisify(fs.readFile)(filePath, 'utf8')
+    console.log('loading html base file...')
+    htmlData = await loadHtmlData()
+  }
+
+  if (!schema) {
+    schema = createSchema()
   }
 
   const client = new ApolloClient({

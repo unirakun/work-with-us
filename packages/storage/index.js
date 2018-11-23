@@ -21,22 +21,27 @@ const list = database => async () => {
   }))
 }
 
-let databases = []
+const databases = new Map()
 
 export const create = (resourceName, options = {}) => () => {
   const { DB_PATH } = process.env
   if (!DB_PATH) throw new Error('Please set DB_PATH!')
 
   if (!resourceName) throw new Error('resourceName parameter must be set!')
+  let database = databases.get(resourceName)
 
-  const database = new PouchDB(
-    `${DB_PATH}/${resourceName}`,
-    {
-      auto_compaction: true,
-      ...options,
-    },
-  )
-  databases.push(database)
+  if (database) {
+    console.log(`Using existing database for ${resourceName}`)
+  } else {
+    database = new PouchDB(
+      `${DB_PATH}/${resourceName}`,
+      {
+        auto_compaction: true,
+        ...options,
+      },
+    )
+    databases.set(resourceName, database)
+  }
 
   return {
     add: add(database, resourceName),
@@ -44,8 +49,13 @@ export const create = (resourceName, options = {}) => () => {
   }
 }
 
-export const closeAll = async () => {
-  console.log(`closing all ${databases.length} databases...`)
-  await Promise.all(databases.map(db => db.close()))
-  databases = []
+export const closeAll = async (cb) => {
+  console.log(`closing all ${databases.size} databases...`)
+
+  const databasesToClose = Array.from(databases.values())
+
+  databases.clear()
+  await Promise.all(databasesToClose.map(db => db.close()))
+
+  if (cb) cb()
 }
