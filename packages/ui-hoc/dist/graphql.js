@@ -52,6 +52,8 @@ var getQuery = function getQuery(query, options) {
 
         if (error) {
           console.trace(new Error(error)); // TODO: error handler
+
+          return null;
         }
 
         if (loading) return _react.default.createElement(Component, props);
