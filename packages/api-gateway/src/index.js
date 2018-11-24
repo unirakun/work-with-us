@@ -4,6 +4,8 @@ const serve = require('koa-static')
 const compress = require('koa-compress')
 const conditional = require('koa-conditional-get')
 const etag = require('koa-etag')
+const { closeAll } = require('@work-with-us/storage')
+const logger = require('@work-with-us/logger')
 const GraphQL = require('./graphql')
 
 const app = new Koa()
@@ -20,7 +22,7 @@ app.use(compress({
     if (contentType === 'application/javascript') return true
     if (contentType === 'application/json') return true
 
-    console.log('This content type is not compressed : ', contentType)
+    logger.log('This content type is not compressed', contentType)
 
     return false
   },
@@ -37,7 +39,7 @@ const getMaxAge = (contentType) => {
   if (contentType === 'application/javascript') return ONE_WEEK_CACHE
   if (contentType === 'application/json') return ONE_DAY_CACHE
 
-  console.log('This content type is not cached : ', contentType)
+  logger.log('This content type is not cached', contentType)
 
   return 0
 }
@@ -47,10 +49,31 @@ app.use(async (ctx, next) => {
 
   if (ctx.status >= 200 && ctx.status < 400) {
     const contentType = ctx.response.headers['content-type'].replace(/; charset=.*?$/, '')
-    const cacheControl = `max-age ${getMaxAge(contentType)}`
+    const cacheControl = `max-age=${getMaxAge(contentType)}`
 
     ctx.set('Cache-Control', cacheControl)
   }
+})
+
+app.use(async (ctx, next) => {
+  // bypass static serving when the client ask for root page
+  // because it should be render by react
+  // we should not return the empty html (elsewise the SSR doesn't take place)
+  if (ctx.path === '/') {
+    await next()
+    return
+  }
+
+  // in other cases we serve statics files
+  // compression and max age are set by an other middleware
+  await serve(
+    staticPath,
+    {
+      maxAge: 0,
+      br: false,
+      gzip: false,
+    },
+  )(ctx, next)
 })
 
 app.use(async (ctx, next) => {
@@ -58,29 +81,23 @@ app.use(async (ctx, next) => {
   return react(ctx, next)
 })
 
-app.use(serve(
-  staticPath,
-  {
-    maxAge: 0,
-    br: false,
-    gzip: false,
-  },
-))
-
 const port = 4000
 const host = '::'
 
 const server = app.listen(port, host, () => {
-  console.log(`🚀 Server ready at http://${host}:${port}${graphql.graphqlPath}`)
-  console.log(`🍛 Serving ${staticPath}`)
-  console.timeEnd('start-server')
+  logger.timeEnd('server ready')
+  logger.info('🍛  ', staticPath)
+  logger.info('🚀  listening', `http://${host}:${port}${graphql.graphqlPath}`)
 })
 
-const interrupt = sigName => () => {
-  console.warn(`caught interrupt signal -${sigName}-`) // eslint-disable-line no-console
-  console.debug('closing HTTP socket...') // eslint-disable-line no-console
+const interrupt = sigName => async () => {
+  logger.warn('caught interrupt signal', sigName) // eslint-disable-line no-console
+
+  logger.debug('closing HTTP socket...') // eslint-disable-line no-console
   server.close(() => {
-    process.exit(0)
+    closeAll(() => {
+      process.exit(0)
+    })
   })
 }
 ['SIGUSR1', 'SIGINT', 'SIGTERM', 'SIGPIPE', 'SIGHUP', 'SIGBREAK'].forEach((sigName) => {

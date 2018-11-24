@@ -10,7 +10,7 @@ export default {
   },
   informations: [
     { text: 'Santéclair est un réseau de mutuelle avec une DSI de 20 personnes. Santéclair permet de simplifier l\'accès au soins de ses adhérents.' },
-    { text: 'Dans le cadre de leur digitalisation j\'étais leur responsable technique Front-End pour le développement d\'application web / mobile d\'aide à l\'accès au soin.' },
+    { text: 'Dans le cadre de leur digitalisation j\'étais leur responsable technique Front-End pour le développement d\'applications web / mobile d\'aide à l\'accès au soin.' },
     {
       text: 'Missions :',
       children: [

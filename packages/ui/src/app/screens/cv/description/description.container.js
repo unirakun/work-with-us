@@ -7,6 +7,8 @@ const request = `query getCV ($name: String!) {
   }
 }`
 
-const mapData = data => ({ children: data.cvs[0].description })
+const mapData = data => ({
+  children: data.cvs[0].description,
+})
 
-export default graphql(request, mapData)(Component)
+export default graphql(request, { mapData })(Component)

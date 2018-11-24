@@ -1,15 +1,11 @@
 {
-  "name": "@work-with-us/cv-to-pdf",
+  "name": "@work-with-us/logger",
   "version": "1.0.0",
   "main": "src/index.js",
   "author": "Fabien JUIF <fabien.juif@gmail.com>",
   "license": "MIT",
   "private": true,
-  "scripts": {
-    "render": "node ."
-  },
   "dependencies": {
-    "@work-with-us/logger": "^1.0.0",
-    "puppeteer": "^1.10.0"
+    "chalk": "^2.4.1"
   }
 }

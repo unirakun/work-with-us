@@ -10,4 +10,8 @@ const Proposals = ({ children }) => (
   </ul>
 )
 
+Proposals.defaultProps = {
+  children: [],
+}
+
 export default Proposals

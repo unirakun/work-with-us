@@ -12,4 +12,4 @@ const request = `query getProposals {
 
 const mapData = data => ({ children: data.proposals })
 
-export default graphql(request, mapData)(Component)
+export default graphql(request, { mapData })(Component)

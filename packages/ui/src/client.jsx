@@ -27,4 +27,5 @@ ReactDOM.hydrate(
   document.getElementById('root'),
 )
 
-require('./serviceWorker').register()
+// FIXME: require('./serviceWorker').register()
+// We should think about cache (graphql) and SSR

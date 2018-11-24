@@ -7,17 +7,27 @@ import { ApolloClient } from 'apollo-client'
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { SchemaLink } from 'apollo-link-schema'
 import { App, theme } from '@work-with-us/ui'
+import logger from '@work-with-us/logger'
 import { StaticRouter } from 'react-router-dom'
 import { promisify } from 'util'
 import path from 'path'
 import fs from 'fs'
-import schema from './schema'
+import createSchema from './schema'
 import cache from './cache'
 
-const filePath = path.resolve(__dirname, '..', '..', 'ui', 'build', 'index.html')
 let htmlData
+let htmlDataPromise
+const loadHtmlData = () => {
+  if (!htmlDataPromise) {
+    const filePath = path.resolve(__dirname, '..', '..', 'ui', 'build', 'index.html')
+    htmlDataPromise = promisify(fs.readFile)(filePath, 'utf8')
+  }
 
-const renderCache = cache({ name: 'render-cache' })
+  return htmlDataPromise
+}
+
+const renderCache = cache({ name: 'render-cache', log: logger.debug })
+let schema
 
 module.exports = async (ctx, next) => {
   const cachedItem = renderCache.get(ctx.path)
@@ -25,10 +35,15 @@ module.exports = async (ctx, next) => {
     ctx.body = cachedItem
     return
   }
+  logger.info('serving (not cached)', ctx.path)
 
   if (!htmlData) {
-    console.log('Loading html base file...')
-    htmlData = await promisify(fs.readFile)(filePath, 'utf8')
+    logger.info('loading html base file')
+    htmlData = await loadHtmlData()
+  }
+
+  if (!schema) {
+    schema = createSchema()
   }
 
   const client = new ApolloClient({
@@ -54,6 +69,7 @@ module.exports = async (ctx, next) => {
   // the react application doesn't found the path
   // we call the next middleware
   if (reactContext.notFound) {
+    logger.warn(`${ctx.path} NOT FOUND BUT REACT WAS CALLED!!`)
     await next()
     return
   }

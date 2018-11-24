@@ -1,4 +1,7 @@
-console.time('start-server')
+const logger = require('@work-with-us/logger')
+
+logger.time('server ready')
+
 require('ignore-styles')
 
 require('@babel/register')({

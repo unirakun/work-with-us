@@ -2,7 +2,7 @@ const who = `{
   avatar: String
   otherAvatar: String
   otherCode: String!
-  name: String!
+  fullName: String!
   what: String
   birthday: Float
   worksSince: Float

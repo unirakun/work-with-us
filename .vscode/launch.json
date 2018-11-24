@@ -8,6 +8,9 @@
       "type": "node",
       "request": "launch",
       "name": "api-gateway",
+      "env": {
+        "DB_PATH": "${workspaceFolder}/db"
+      },
       "program": "${workspaceFolder}/packages/api-gateway/bootstrap"
     },
     {

@@ -18,7 +18,7 @@ const Social = ({ className, name, url }) => {
     >
       <StyledSocialLogo icon={name} size={36} />
       <span>
-        {name === 'twitter' && '@'}
+        {(name === 'twitter' && pseudo) && '@'}
         {pseudo}
       </span>
     </a>
