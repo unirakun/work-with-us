@@ -13,15 +13,14 @@ export default {
     to: Date.UTC(2019, 2),
   },
   informations: [
-    { text: 'Metroscope est une startup, filiale du groupe EDF, composé d’une dizaine de personnes.' },
-    { text: 'Avec Fabien JUIF, nous avons mis en place et continuons à développer le produit Metroscope sur la partie Front-End à distance.' },
-    { text: 'Une fois celle-ci sécurisée et en production nous avons formé nos successeurs afin qu’ils puissent être autonome sur la stack mise en place.' },
+    { text: 'Metroscope est une startup, filiale du groupe EDF, composée d’une dizaine de personnes. Le Metroscope permet de déterminer rapidement les anomalies survenant sur les systèmes de refroidissement des centrales nucléaires.' },
+    { text: 'Avec Fabien JUIF, nous avons mis en place et continuons à développer le produit Metroscope sur la partie Front-End à distance. Une fois celle-ci sécurisée et en production nous avons formé nos successeurs afin qu’ils puissent être autonome sur la stack mise en place.' },
     {
       text: 'Missions :',
       children: [
         { text: 'Développement Front-End' },
         { text: 'Atelier UX / UI' },
-        { text: 'Entretiens et choix des successeurs' },
+        { text: 'Aide au recrutement: entretiens et choix des successeurs' },
         { text: 'Formation des successeurs' },
       ],
     },

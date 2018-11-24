@@ -20,7 +20,7 @@ export default {
       children: [
         { text: 'Mise en place de l’architecture technique sur une stack MEAN' },
         { text: 'Développement front et back de l\'application' },
-        { text: 'Mise en place d’outil de qualité de code' },
+        { text: 'Mise en place d’outils de qualité de code' },
       ],
     },
     {

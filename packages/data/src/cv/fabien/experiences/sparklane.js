@@ -30,7 +30,7 @@ export default {
         { text: 'react-vis' },
         { text: 'ReactJS' },
         { text: 'k-ramel' },
-        { text: 'SaaS' },
+        { text: 'SaSS' },
         { text: 'create-react-app' },
         { text: 'docker' },
         { text: 'nginx' },

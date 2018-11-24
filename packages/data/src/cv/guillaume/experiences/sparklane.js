@@ -27,11 +27,7 @@ export default {
     {
       text: 'Technologies utilisées : ',
       children: [
-        { text: 'react-vis' },
-        { text: 'ReactJS' },
-        { text: 'k-ramel' },
-        { text: 'SaaS' },
-        { text: 'create-react-app' },
+        { text: 'ReactJS / k-ramel / react-vis' },
         { text: 'docker' },
         { text: 'nginx' },
       ],

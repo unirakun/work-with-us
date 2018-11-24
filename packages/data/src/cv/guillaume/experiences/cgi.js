@@ -18,7 +18,6 @@ export default {
       text: 'Missions :',
       children: [
         { text: 'Conception et réalisation  de l’architecture de diverses applications' },
-        { text: 'Mise en place de Framework tel que Spring, Struts , Hibernate, ainsi que des Framework propriétaire LAPOSTE' },
         { text: 'Gestion des plateformes d’intégration continue, implémentation des scripts de déploiement, de création de livrable' },
         { text: 'Gestion des composants Apache Tomcat et IBM Websphere' },
         { text: 'Chiffrage de fonctionnalité' },
