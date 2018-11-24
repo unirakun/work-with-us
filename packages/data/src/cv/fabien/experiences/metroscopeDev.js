@@ -1,5 +1,5 @@
 export default {
-  title: 'Lead Développeur Frontend',
+  title: 'Développeur frontend',
   client: {
     name: 'Metroscope',
     color: '#0052a9',

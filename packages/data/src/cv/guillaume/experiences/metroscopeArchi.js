@@ -33,7 +33,7 @@ export default {
         { text: 'Java 8 / SpringBoot' },
         { text: 'Webpack / Babel / ESLint' },
         { text: 'Cypress / Jest' },
-        { text: 'Docker / CircleCI / Kubernetes' },
+        { text: 'Docker / CircleCI / Kubernetes / GKE (google cloud)' },
         { text: 'Github / Jira' },
       ],
     },
