@@ -1,7 +1,7 @@
 export default {
   title: 'Expert et formateur NodeJS',
   client: {
-    name: 'Darva',
+    name: 'DARVA',
     color: '#748694',
   },
   for: {
