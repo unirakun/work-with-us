@@ -4,43 +4,16 @@ const serve = require('koa-static')
 const compress = require('koa-compress')
 const conditional = require('koa-conditional-get')
 const etag = require('koa-etag')
-const mount = require('koa-mount')
-const session = require('koa-session')
-const grant = require('grant-koa')
-const koaqs = require('koa-qs')
-const got = require('got')
 const { closeAll } = require('@work-with-us/storage')
 const logger = require('@work-with-us/logger')
 const GraphQL = require('./graphql')
+const auth = require('./auth')
 
 const app = new Koa()
 const graphql = GraphQL(app)
 const staticPath = path.resolve(__dirname, '../../ui/build')
 
-// TODO: move it to its own file
-app.keys = ['grant']
-app.use(session(app))
-app.use(mount(grant(require('./oauth'))))
-koaqs(app) // TODO: try to move it at top
-
-app.use(async (ctx, next) => {
-  if (ctx.path === '/google_callback') {
-    // FIXME: complete this
-    const response = await got(
-      'https://content.googleapis.com/plus/v1/people/me',
-      {
-        json: true,
-        headers: {
-          authorization: `Bearer ${ctx.query.access_token}`,
-        },
-      },
-    )
-
-    ctx.body = response.body
-  } else {
-    await next()
-  }
-})
+auth(app)
 
 app.use(conditional())
 app.use(etag())
