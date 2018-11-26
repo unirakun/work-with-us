@@ -14,7 +14,7 @@ export default {
   },
   informations: [
     { text: 'Metroscope est une startup, filiale du groupe EDF, composée d’une dizaine de personnes. Le Metroscope permet de déterminer rapidement les anomalies survenant sur les systèmes de refroidissement des centrales nucléaires.' },
-    { text: 'Avec Guillaume CRESPEL, nous avons mis en place et nous avons continué à développer le produit Metroscope sur la partie Front-End, à distance. Une fois celle-ci sécurisée et en production nous avons formé nos successeurs afin qu’ils puissent être autonomes sur la stack mise en place.' },
+    { text: 'Avec Fabien JUIF, nous avons mis en place et nous avons continué à développer le produit Metroscope sur la partie Front-End, à distance. Une fois celle-ci sécurisée et en production nous avons formé nos successeurs afin qu’ils puissent être autonomes sur la stack mise en place.' },
     {
       text: 'Missions :',
       children: [
