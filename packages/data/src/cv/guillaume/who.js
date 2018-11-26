@@ -1,6 +1,6 @@
 export default {
   avatar: '/guillaume.png',
-  name: 'Guillaume CRESPEL',
+  fullName: 'Guillaume CRESPEL',
   what: 'Javascript developer - Fullstack',
   birthday: Date.UTC(1988, 5, 13),
   worksSince: Date.UTC(2010, 8, 1),
