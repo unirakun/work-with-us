@@ -1,20 +1,25 @@
 const { gql } = require('apollo-server')
+const cv = require('./cv')
 const auth = require('./auth')
 const contact = require('./contact')
 const proposal = require('./proposal')
-const cv = require('./cv')
+const user = require('./user')
 
 module.exports = gql`
+  ${cv}
+
   ${auth}
 
   ${contact}
   ${proposal}
 
-  ${cv}
+
+  ${user}
 
   type Query {
     proposals: [Proposal]
     cvs(name: String): [CV]!
+    users: [User]
   }
 
   type Mutation {

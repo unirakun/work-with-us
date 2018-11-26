@@ -3,17 +3,39 @@ const session = require('koa-session')
 const grant = require('grant-koa')
 const koaqs = require('koa-qs')
 const got = require('got')
+const jwt = require('jsonwebtoken')
+const createUsers = require('@work-with-us/api-users').default
 const config = require('./config')
 
+const {
+  JWT_SECRET,
+} = process.env
+
+if (!JWT_SECRET) throw new Error('JWT_SECRET must be set')
+
+// TODO: use promisify
+const getToken = payload => new Promise((resolve, reject) => {
+  jwt.sign(payload, JWT_SECRET, { expiresIn: '2 days' }, (err, token) => {
+    if (err) {
+      reject(err)
+      return
+    }
+
+    resolve(token)
+  })
+})
+
 module.exports = (app) => {
+  koaqs(app)
+
   if (!app.keys) app.keys = [] // eslint-disable-line no-param-reassign
   app.keys.push('grant')
 
   app.use(session(app))
   app.use(mount(grant(config)))
-  koaqs(app) // TODO: try to move it at top
 
-  // TODO: should wrap graphql
+  const users = createUsers()
+
   app.use(async (ctx, next) => {
     if (ctx.path === '/google_callback') {
       // FIXME: complete this
@@ -27,10 +49,15 @@ module.exports = (app) => {
         },
       )
 
-      ctx.body = response.body
+      const token = await getToken({ role: 'ADMIN' })
+      await users.addOrUpdate({
+        ...response.body,
+        oauth: ctx.query,
+      })
+
+      ctx.body = token
     } else {
       await next()
     }
   })
-
 }

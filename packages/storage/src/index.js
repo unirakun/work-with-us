@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const PouchDB = require('pouchdb')
 const logger = require('@work-with-us/logger')
 
@@ -10,6 +11,26 @@ const add = (database, resourceName) => async (resource) => {
   })
 }
 
+const addOrUpdate = (database, resourceName) => async (resource) => {
+  // get older revision
+  let _rev
+  try {
+    const id = (resource.id || resource._id)
+    if (id) {
+      const older = await database.get(id)
+      _rev = older._rev // eslint-disable-line prefer-destructuring
+    }
+  } catch (ex) {
+    if (ex.status !== 404) throw ex
+  }
+
+  // add (or update)
+  await add(database, resourceName)({
+    ...resource,
+    _rev,
+  })
+}
+
 const list = database => async () => {
   const result = await database.allDocs({
     include_docs: true,
@@ -17,7 +38,7 @@ const list = database => async () => {
 
   return result.rows.map(document => ({
     ...document.doc,
-    id: document.doc._id, // eslint-disable-line no-underscore-dangle
+    id: document.doc._id,
     _id: undefined,
   }))
 }
@@ -46,6 +67,7 @@ const create = (resourceName, options = {}) => () => {
 
   return {
     add: add(database, resourceName),
+    addOrUpdate: addOrUpdate(database, resourceName),
     list: list(database, resourceName),
   }
 }

@@ -6,6 +6,13 @@ import typeDefs from './types'
 export default () => {
   const resolvers = {
     Query: {
+      users: async (parent, args, { role, models }) => {
+        // TODO: user schema directive
+        if (role !== 'ADMIN') return []
+
+        const users = await models.users.list()
+        return users
+      },
       proposals: async (parent, args, { role, models }) => {
         // TODO: use schema directive
         if (role !== 'ADMIN') return []
