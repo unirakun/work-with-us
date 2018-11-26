@@ -6,8 +6,8 @@ import ge from './ge'
 import ices from './ices'
 import maif from './maif'
 import mcomm from './mcomm'
-import metroscopeConseil from './metroscope_conseil'
-import metroscopeDev from './metroscope_dev'
+import metroscopeArchi from './metroscopeArchi'
+import metroscopeDev from './metroscopeDev'
 import santeclair from './santeclair'
 import sparklane from './sparklane'
 
@@ -20,7 +20,7 @@ export default [
   ices,
   maif,
   mcomm,
-  metroscopeConseil,
+  metroscopeArchi,
   metroscopeDev,
   santeclair,
   sparklane,

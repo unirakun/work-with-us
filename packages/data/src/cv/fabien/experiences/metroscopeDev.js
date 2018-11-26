@@ -1,5 +1,5 @@
 export default {
-  title: 'Consultant et développeur en architecture logiciel',
+  title: 'Développeur frontend',
   client: {
     name: 'Metroscope',
     color: '#0052a9',
@@ -9,21 +9,19 @@ export default {
     color: 'white',
   },
   dates: {
-    from: Date.UTC(2018, 2),
-    to: Date.UTC(2018, 5),
+    from: Date.UTC(2018, 6),
+    to: Date.UTC(2019, 2),
   },
   informations: [
     { text: 'Metroscope est une startup, filiale du groupe EDF, composée d’une dizaine de personnes. Le Metroscope permet de déterminer rapidement les anomalies survenant sur les systèmes de refroidissement des centrales nucléaires.' },
-    { text: 'Avec Fabien JUIF, nous avons challengé leur MVP afin de produire une première version sur une stack solide et efficace tout en gardant en vue les besoins et contraintes d\'une grosse structure comme EDF.' },
+    { text: 'Avec Guillaume CRESPEL, nous avons mis en place et nous avons continué à développer le produit Metroscope sur la partie Front-End, à distance. Une fois celle-ci sécurisée et en production nous avons formé nos successeurs afin qu’ils puissent être autonomes sur la stack mise en place.' },
     {
       text: 'Missions :',
       children: [
-        { text: 'Réflexion sur la structure de base de données' },
-        { text: 'Réflexion sur les technologies adéquates Front-end et Back-End à utiliser' },
-        { text: 'Mise en place du socle technique Front-End et Back-End' },
-        { text: 'Mise en place d’une CI / CD' },
+        { text: 'Développement Front-End' },
         { text: 'Atelier UX / UI' },
-        { text: 'Aide à la gestion de projet et conseils en agilité' },
+        { text: 'Aide au recrutement : entretiens et choix des successeurs' },
+        { text: 'Formation des successeurs' },
       ],
     },
     {

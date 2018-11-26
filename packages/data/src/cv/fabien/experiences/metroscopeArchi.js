@@ -1,5 +1,5 @@
 export default {
-  title: 'Consultant et développeur en architecture logiciel',
+  title: 'Consultant en architecture et gestion de projet',
   client: {
     name: 'Metroscope',
     color: '#0052a9',
@@ -14,7 +14,7 @@ export default {
   },
   informations: [
     { text: 'Metroscope est une startup, filiale du groupe EDF, composée d’une dizaine de personnes. Le Metroscope permet de déterminer rapidement les anomalies survenant sur les systèmes de refroidissement des centrales nucléaires.' },
-    { text: 'Avec Fabien JUIF, nous avons challengé leur MVP afin de produire une première version sur une stack solide et efficace tout en gardant en vue les besoins et contraintes d\'une grosse structure comme EDF.' },
+    { text: 'Avec Guillaume CRESPEL, nous avons challengé leur MVP afin de produire une première version sur une stack solide et efficace tout en gardant en vue les besoins et contraintes d\'une grosse structure comme EDF.' },
     {
       text: 'Missions :',
       children: [
