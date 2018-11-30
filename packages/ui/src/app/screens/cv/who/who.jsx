@@ -80,8 +80,8 @@ const StyledWho = styled(Who)`
   grid-template-areas:
     ". socials avatar . . . ."
     ". socials avatar description . . ."
-    ". socials avatar age-experience . . ."
     ". socials avatar . . . ."
+    ". socials avatar age-experience . . ."
     "skills skills skills skills skills skills skills";
 
   & > #particles-js {
@@ -125,6 +125,7 @@ const StyledWho = styled(Who)`
   & > .age-experience {
     grid-area: age-experience;
     min-height: 1em;
+    align-self: baseline;
   }
 
   & > .socials {
