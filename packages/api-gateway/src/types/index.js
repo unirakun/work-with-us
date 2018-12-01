@@ -13,7 +13,6 @@ export default gql`
   ${contact}
   ${proposal}
 
-
   ${user}
 
   type Query {
