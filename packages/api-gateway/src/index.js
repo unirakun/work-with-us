@@ -6,14 +6,14 @@ const conditional = require('koa-conditional-get')
 const etag = require('koa-etag')
 const { closeAll } = require('@work-with-us/storage')
 const logger = require('@work-with-us/logger')
+const { authenticateWithKoa } = require('@work-with-us/api-auth')
 const GraphQL = require('./graphql')
-const auth = require('./auth')
 
 const app = new Koa()
 const graphql = GraphQL(app)
 const staticPath = path.resolve(__dirname, '../../ui/build')
 
-auth(app)
+authenticateWithKoa(app)
 
 app.use(conditional())
 app.use(etag())

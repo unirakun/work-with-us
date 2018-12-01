@@ -1,0 +1,20 @@
+{
+  "name": "@work-with-us/api-auth",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "author": "Fabien JUIF <fabien.juif@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@work-with-us/api-users": "^1.0.0",
+    "@work-with-us/logger": "^1.0.0",
+    "@work-with-us/storage": "^1.0.0",
+    "got": "^9.3.2",
+    "grant": "^4.2.0",
+    "grant-koa": "^4.2.0",
+    "jsonwebtoken": "^8.4.0",
+    "koa-mount": "^4.0.0",
+    "koa-qs": "^2.0.0",
+    "koa-session": "^5.10.0"
+  }
+}
