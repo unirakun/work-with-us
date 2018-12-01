@@ -1,13 +1,13 @@
-const cv = require('./cv')
-const duration = require('./duration')
-const enterprise = require('./enterprise')
-const experience = require('./experience')
-const groupSkill = require('./groupSkill')
-const skill = require('./skill')
-const social = require('./social')
-const who = require('./who')
+import cv from './cv'
+import duration from './duration'
+import enterprise from './enterprise'
+import experience from './experience'
+import groupSkill from './groupSkill'
+import skill from './skill'
+import social from './social'
+import who from './who'
 
-module.exports = `
+export default `
   ${social}
   ${who}
 

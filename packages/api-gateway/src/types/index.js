@@ -1,11 +1,11 @@
-const { gql } = require('apollo-server')
-const cv = require('./cv')
-const auth = require('./auth')
-const contact = require('./contact')
-const proposal = require('./proposal')
-const user = require('./user')
+import { gql } from 'apollo-server'
+import cv from './cv'
+import auth from './auth'
+import contact from './contact'
+import proposal from './proposal'
+import user from './user'
 
-module.exports = gql`
+export default gql`
   ${cv}
 
   ${auth}

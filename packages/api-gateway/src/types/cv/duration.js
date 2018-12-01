@@ -3,6 +3,6 @@ const duration = `{
   to: Float
 }`
 
-module.exports = `
+export default `
   type Duration ${duration}
 `

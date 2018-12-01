@@ -3,6 +3,6 @@ const user = `{
   id: String!
 }`
 
-module.exports = `
+export default `
   type User ${user}
 `

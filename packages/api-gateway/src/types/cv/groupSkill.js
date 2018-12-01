@@ -3,6 +3,6 @@ const groupSkill = `{
   skills: [Skill]!
 }`
 
-module.exports = `
+export default `
   type GroupSkill ${groupSkill}
 `

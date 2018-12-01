@@ -11,7 +11,7 @@ const experience = `{
   informations: [Information]
 }`
 
-module.exports = `
+export default `
   type Information ${information}
   type Experience ${experience}
 `

@@ -3,6 +3,6 @@ const enterprise = `{
   color: String
 }`
 
-module.exports = `
+export default `
   type Enterprise ${enterprise}
 `

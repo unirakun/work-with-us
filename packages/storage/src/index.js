@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
-const PouchDB = require('pouchdb')
-const logger = require('@work-with-us/logger')
+import PouchDB from 'pouchdb'
+import logger from '@work-with-us/logger'
 
 const mapToStorage = resourceName => (doc) => {
   const {
@@ -136,7 +136,7 @@ const closeAll = async (cb) => {
   if (cb) cb()
 }
 
-module.exports = {
+export {
   create,
   closeAll,
   drop,
