@@ -17,9 +17,9 @@ export default gql`
   ${user}
 
   type Query {
-    proposals: [Proposal]
+    proposals: [Proposal] @auth(requires: ADMIN)
     cvs(name: String): [CV]!
-    users: [User]
+    users: [User] @auth(requires: ADMIN)
   }
 
   type Mutation {

@@ -2,21 +2,16 @@ import { makeExecutableSchema } from 'graphql-tools'
 import { cv } from '@work-with-us/data'
 import logger from '@work-with-us/logger'
 import typeDefs from './types'
+import schemaDirectives from './directives'
 
 export default () => {
   const resolvers = {
     Query: {
-      users: async (parent, args, { role, models }) => {
-        // TODO: user schema directive
-        if (role !== 'ADMIN') return []
-
+      users: async (parent, args, { models }) => {
         const users = await models.users.list()
         return users
       },
-      proposals: async (parent, args, { role, models }) => {
-        // TODO: use schema directive
-        if (role !== 'ADMIN') return []
-
+      proposals: async (parent, args, { models }) => {
         let res
         try {
           res = await models.proposals.list()
@@ -65,5 +60,6 @@ export default () => {
   return makeExecutableSchema({
     typeDefs,
     resolvers,
+    schemaDirectives,
   })
 }

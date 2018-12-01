@@ -18,7 +18,7 @@ export default () => {
 
     return {
       models,
-      role,
+      role: [].concat(role),
     }
   }
 }
