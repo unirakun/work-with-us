@@ -1,6 +1,6 @@
 const user = `{
   fullName: String!
-  id: Float
+  id: String!
 }`
 
 module.exports = `

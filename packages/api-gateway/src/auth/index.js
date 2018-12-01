@@ -5,6 +5,7 @@ const koaqs = require('koa-qs')
 const got = require('got')
 const jwt = require('jsonwebtoken')
 const createUsers = require('@work-with-us/api-users').default
+const logger = require('@work-with-us/logger')
 const config = require('./config')
 
 const {
@@ -38,7 +39,7 @@ module.exports = (app) => {
 
   app.use(async (ctx, next) => {
     if (ctx.path === '/google_callback') {
-      // FIXME: complete this
+      logger.debug('someone trying to connect')
       const response = await got(
         'https://content.googleapis.com/plus/v1/people/me',
         {
@@ -49,9 +50,22 @@ module.exports = (app) => {
         },
       )
 
+      // check user by its id (google id)
+      logger.debug('google user found', response.body.displayName)
+      const olderUser = await users.get(response.body.id)
+      if (!olderUser) {
+        logger.warn('user is not authorized!', response.body.displayName)
+        ctx.status = 403
+        return
+      }
+
+      logger.debug('generating a new token', response.body.displayName)
       const token = await getToken({ role: 'ADMIN' })
+
+      const { displayName, ...user } = response.body
       await users.addOrUpdate({
-        ...response.body,
+        ...user,
+        fullName: displayName,
         oauth: ctx.query,
       })
 
