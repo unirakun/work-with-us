@@ -44,8 +44,6 @@ export default styled(Summary)`
   margin: 4em 0;
   padding: 3em 0;
   position: relative;
-  width: 100vw;
-
   & > .background {
     background-color: #f3f3f3;
     position: absolute;
