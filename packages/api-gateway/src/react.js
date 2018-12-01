@@ -14,6 +14,7 @@ import path from 'path'
 import fs from 'fs'
 import createSchema from './schema'
 import cache from './cache'
+import makeContext from './makeContext'
 
 let htmlData
 let htmlDataPromise
@@ -48,7 +49,7 @@ module.exports = async (ctx, next) => {
 
   const client = new ApolloClient({
     ssrMode: true,
-    link: new SchemaLink({ schema }),
+    link: new SchemaLink({ schema, context: makeContext }),
     cache: new InMemoryCache(),
   })
 
