@@ -27,6 +27,7 @@ function ensureFieldsWrapped(objectType) {
       }
 
       const [, , context, definition] = args
+      console.log('auth-directive', definition.name)
       const { role } = context
       if (!role.includes(requiredRole)) {
         if (definition.returnType instanceof GraphQLList) return []
@@ -39,11 +40,6 @@ function ensureFieldsWrapped(objectType) {
 }
 
 export default class AuthDirective extends SchemaDirectiveVisitor {
-  visitObject(type) {
-    ensureFieldsWrapped(type)
-    type._requiredAuthRole = this.args.requires
-  }
-
   visitFieldDefinition(field, details) {
     ensureFieldsWrapped(details.objectType)
     field._requiredAuthRole = this.args.requires

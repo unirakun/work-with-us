@@ -18,7 +18,7 @@ export default () => {
   const users = createUsers()
 
   return async (tokens) => {
-    logger.debug('someone trying to connect', `Bearer ${tokens.access_token}`)
+    logger.debug('someone trying to connect')
     const response = await got(
       'https://content.googleapis.com/plus/v1/people/me',
       {

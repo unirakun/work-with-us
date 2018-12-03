@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle, no-param-reassign */
-// code from: https://blog.apollographql.com/reusable-graphql-schema-directives-131fb3a177d1
 import { defaultFieldResolver } from 'graphql'
 import { SchemaDirectiveVisitor } from 'graphql-tools'
+import { Resolver } from 'dns';
 
 function ensureFieldsWrapped(objectType) {
   // Mark the GraphQLObjectType object to avoid re-wrapping:
@@ -14,18 +14,22 @@ function ensureFieldsWrapped(objectType) {
     const field = fields[fieldName]
     const { resolve = defaultFieldResolver } = field
 
-    field.resolve = async (...args) => {
+    // mettre dans l'ordre
+    console.log('directives', field.astNode.directives)
+
+    field.resolve = next => async (...args) => {
       const apiName = (
         field._apiName
         || objectType._apiName
       )
 
       if (!apiName) {
-        return resolve.apply(this, args)
+        return next()
       }
 
       const [, { input }, context, definition] = args
       const { models } = context
+      // console.log('api-directive', definition)
       if (definition.parentType.name === 'Query') {
         return models[apiName].list()
       }
@@ -41,6 +45,8 @@ function ensureFieldsWrapped(objectType) {
 
 export default class ApiDirective extends SchemaDirectiveVisitor {
   visitFieldDefinition(field, details) {
+    Resolver.register(field, () => )
+    // console.log('field', field.astNode.directives.map(d => d.arguments))
     ensureFieldsWrapped(details.objectType)
     field._apiName = this.args.name
   }

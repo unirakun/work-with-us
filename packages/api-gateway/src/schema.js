@@ -7,6 +7,10 @@ import schemaDirectives from './directives'
 export default () => {
   const resolvers = {
     Query: {
+      users: () => [{
+        id: 'qqch',
+        fullName: 'oui',
+      }],
       cvs: (parent, { name }) => {
         if (!name) return Object.values(cv)
 
