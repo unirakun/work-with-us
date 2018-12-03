@@ -7,23 +7,7 @@ import schemaDirectives from './directives'
 export default () => {
   const resolvers = {
     Query: {
-      users: async (parent, args, { models }) => {
-        const users = await models.users.list()
-        return users
-      },
-      proposals: async (parent, args, { models }) => {
-        let res
-        try {
-          res = await models.proposals.list()
-        } catch (ex) {
-          logger.error(ex)
-          throw ex
-        }
-
-        return res
-      },
-      cvs: (parent, { name }, { role }) => {
-        logger.debug('role', role)
+      cvs: (parent, { name }) => {
         if (!name) return Object.values(cv)
 
         const otherCode = name === 'fabien' ? 'guillaume' : 'fabien'
@@ -40,18 +24,6 @@ export default () => {
             },
           },
         ]
-      },
-    },
-    Mutation: {
-      addProposal: async (parent, { input }, { models }) => {
-        try {
-          await models.proposals.add(input)
-        } catch (ex) {
-          logger.error(ex)
-          return false
-        }
-
-        return true
       },
     },
   }

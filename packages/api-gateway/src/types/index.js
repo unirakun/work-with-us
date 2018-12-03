@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server'
 import cv from './cv'
-import auth from './auth'
+import directives from './directives'
 import contact from './contact'
 import proposal from './proposal'
 import user from './user'
@@ -8,7 +8,7 @@ import user from './user'
 export default gql`
   ${cv}
 
-  ${auth}
+  ${directives}
 
   ${contact}
   ${proposal}
@@ -17,12 +17,12 @@ export default gql`
   ${user}
 
   type Query {
-    proposals: [Proposal] @auth(requires: ADMIN)
+    proposals: [Proposal] @auth(requires: ADMIN) @api(name: "proposals")
     cvs(name: String): [CV]!
-    users: [User] @auth(requires: ADMIN)
+    users: [User] @auth(requires: ADMIN) @api(name: "users")
   }
 
   type Mutation {
-    addProposal(input: InputProposal!): Boolean
+    addProposal(input: InputProposal!): Boolean @api(name: "proposals")
   }
 `
