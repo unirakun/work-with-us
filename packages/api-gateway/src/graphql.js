@@ -2,7 +2,7 @@ import { ApolloServer } from 'apollo-server-koa'
 import makeContext from './makeContext'
 import schema from './schema'
 
-module.exports = (app) => {
+export default (app) => {
   const server = new ApolloServer({
     schema: schema(),
     context: makeContext(),

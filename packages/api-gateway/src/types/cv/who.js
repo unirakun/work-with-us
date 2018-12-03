@@ -9,6 +9,6 @@ const who = `{
   socials: [Social]
 }`
 
-module.exports = `
+export default `
   type Who ${who}
 `

@@ -30,7 +30,7 @@ const loadHtmlData = () => {
 const renderCache = cache({ name: 'render-cache', log: logger.debug })
 let schema
 
-module.exports = async (ctx, next) => {
+export default async (ctx, next) => {
   const cachedItem = renderCache.get(ctx.path)
   if (cachedItem) {
     ctx.body = cachedItem

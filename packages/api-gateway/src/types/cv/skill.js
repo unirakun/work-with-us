@@ -3,6 +3,6 @@ const skill = `{
   note: Int!
 }`
 
-module.exports = `
+export default `
   type Skill ${skill}
 `
