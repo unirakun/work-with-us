@@ -73,7 +73,6 @@ export default styled(Summary)`
   }
 
   & ul {
-    width: 25em;
     list-style: none;
     padding: 0;
     z-index: 20;
