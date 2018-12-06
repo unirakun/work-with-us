@@ -1,4 +1,4 @@
-import { createVisitFieldDefinition } from './resolver'
+import { createVisitFieldDefinition } from 'graphql-directives-middlewares'
 
 export default createVisitFieldDefinition(
   'api',

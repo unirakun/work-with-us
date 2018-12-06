@@ -1,5 +1,5 @@
 import { GraphQLList } from 'graphql'
-import { createVisitFieldDefinition } from './resolver'
+import { createVisitFieldDefinition } from 'graphql-directives-middlewares'
 
 export default createVisitFieldDefinition(
   'auth',
