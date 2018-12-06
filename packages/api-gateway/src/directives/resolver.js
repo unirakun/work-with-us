@@ -1,39 +1,37 @@
+/* eslint-disable no-underscore-dangle */
 import { defaultFieldResolver } from 'graphql'
 import { SchemaDirectiveVisitor } from 'graphql-tools'
 
 const resolvers = new Map()
 
-export const registerResolver = (directiveName, resolver) => {
-  resolver.directiveName = directiveName
+const registerResolver = (directiveName, resolver) => {
+  resolver.directiveName = directiveName // eslint-disable-line no-param-reassign
   resolvers.set(directiveName, resolver)
 }
 
-export const sortedResolve = baseResolve => (field) => {
-  const {
-    astNode,
-  } = field
-
-  const {
-    directives,
-  } = astNode
-
-
+const getMiddlewareResolver = ({
+  baseResolver,
+  directives,
+  params,
+}) => {
   const middlewares = directives
-    .map(({ name }) => name.value)
-    .map(key => resolvers.get(key))
-  middlewares.push(() => baseResolve)
+    .map(({ name }) => resolvers.get(name.value))
 
+  middlewares.push(() => baseResolver)
+
+  // this is the final resolver
   return async (...args) => {
-    const middlewaresToExecute = [...middlewares]
     let index = 0
 
     const next = async () => {
-      const nextMiddleware = middlewaresToExecute[index]
-
-      console.log(`Executing ${nextMiddleware.directiveName} on ${field.name}`)
-
+      const nextMiddleware = middlewares[index]
       index += 1
-      const nextRes = await nextMiddleware(field._directivesArgs[nextMiddleware.directiveName], next)(...args)
+
+      const nextRes = await nextMiddleware(
+        params[nextMiddleware.directiveName],
+        next,
+      )(...args)
+
       return nextRes
     }
 
@@ -42,19 +40,52 @@ export const sortedResolve = baseResolve => (field) => {
   }
 }
 
+const getResolve = ({
+  directiveName,
+  args,
+  field,
+}) => {
+  const __kmeta = {
+    args: {},
+    registeredResolversCount: 0,
+    baseResolver: field.resolve,
+    ...(field.resolve || defaultFieldResolver).__kmeta,
+  }
+
+  __kmeta.registeredResolversCount += 1
+  __kmeta.args[directiveName] = args
+
+  const {
+    astNode,
+  } = field
+
+  const {
+    directives,
+  } = astNode
+
+  if (__kmeta.registeredResolversCount !== directives.length) {
+    return { __kmeta }
+  }
+
+  return getMiddlewareResolver({
+    directives,
+    baseResolver: __kmeta.baseResolver,
+    params: __kmeta.args,
+  })
+}
+
+// eslint-disable-next-line import/prefer-default-export
 export const createVisitFieldDefinition = (directiveName, resolver) => {
   registerResolver(directiveName, resolver)
 
   return class extends SchemaDirectiveVisitor {
+    /* eslint-disable no-param-reassign, class-methods-use-this */
     visitFieldDefinition(field) {
-      if (!field._baseResolve) {
-        field._baseResolve = field.resolve || defaultFieldResolver
-      }
-
-      if (!field._directivesArgs) field._directivesArgs = []
-      field._directivesArgs[directiveName] = this.args
-
-      field.resolve = sortedResolve(field._baseResolve)(field)
+      field.resolve = getResolve({
+        field,
+        directiveName,
+        args: this.args,
+      })
     }
   }
 }
