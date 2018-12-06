@@ -1,14 +1,10 @@
 import { defaultFieldResolver } from 'graphql'
 import { SchemaDirectiveVisitor } from 'graphql-tools'
 
-const ORDER = [
-  'auth',
-  'api',
-]
-
 const resolvers = new Map()
 
 export const registerResolver = (directiveName, resolver) => {
+  resolver.directiveName = directiveName
   resolvers.set(directiveName, resolver)
 }
 
@@ -21,11 +17,10 @@ export const sortedResolve = baseResolve => (field) => {
     directives,
   } = astNode
 
-  const directiveNames = directives.map(({ name }) => name.value)
 
-  const middlewares = directiveNames
+  const middlewares = directives
+    .map(({ name }) => name.value)
     .map(key => resolvers.get(key))
-    .sort((a, b) => ORDER.indexOf(a) - ORDER.indexOf(b))
   middlewares.push(() => baseResolve)
 
   return async (...args) => {
@@ -34,8 +29,11 @@ export const sortedResolve = baseResolve => (field) => {
 
     const next = async () => {
       const nextMiddleware = middlewaresToExecute[index]
+
+      console.log(`Executing ${nextMiddleware.directiveName} on ${field.name}`)
+
       index += 1
-      const nextRes = await nextMiddleware(next)(args)
+      const nextRes = await nextMiddleware(field._directivesArgs[nextMiddleware.directiveName], next)(...args)
       return nextRes
     }
 
@@ -44,42 +42,19 @@ export const sortedResolve = baseResolve => (field) => {
   }
 }
 
-export const createVisitFieldDefinition = (directiveName, creator, resolver) => {
+export const createVisitFieldDefinition = (directiveName, resolver) => {
   registerResolver(directiveName, resolver)
 
   return class extends SchemaDirectiveVisitor {
-    visitFieldDefinition(field, details) {
-      creator(field, this.args)
-
-      if (!field._hasResolverAttached) {
-        field._hasResolverAttached = true
-        field.resolve = sortedResolve(field.resolve)(field)
+    visitFieldDefinition(field) {
+      if (!field._baseResolve) {
+        field._baseResolve = field.resolve || defaultFieldResolver
       }
+
+      if (!field._directivesArgs) field._directivesArgs = []
+      field._directivesArgs[directiveName] = this.args
+
+      field.resolve = sortedResolve(field._baseResolve)(field)
     }
   }
 }
-
-// auth.js
-export default createVisitFieldDefinition(
-  'auth',
-  (field, args) => { field._requiredAuthRole = args.requires },
-  (next) => (...args) => {
-    // if good role
-    return next()
-
-    return []
-  },
-)
-
-// api.js
-export default createVisitFieldDefinition(
-  'api',
-  (field, args) => { field._requiredAuthRole = args.requires },
-  (next) => (...args) => {
-    // si j'ai pas d'api
-    return next()
-
-    // call de l'api
-    return models[blabla]
-  },
-)

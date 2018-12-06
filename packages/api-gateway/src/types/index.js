@@ -16,16 +16,12 @@ export default gql`
   ${user}
 
   type Query {
-    proposals: [Proposal] @auth(requires: ADMIN)
+    proposals: [Proposal] @auth(requires: ADMIN) @api(name: "proposals")
     cvs(name: String): [CV]!
     users: [User] @auth(requires: ADMIN) @api(name: "users")
   }
 
   type Mutation {
-    addProposal(input: InputProposal!): Boolean
+    addProposal(input: InputProposal!): Boolean @api(name: "proposals")
   }
 `
-
-//  @api(name: "proposals")
-// @api(name: "proposals")
-//
