@@ -15,7 +15,7 @@ export default createVisitFieldDefinition(
     const [, , context, definition] = args
     const { role } = context
 
-    if (!role.includes(requiredRole)) {
+    if (!role || !role.includes(requiredRole)) {
       if (definition.returnType instanceof GraphQLList) return []
       throw new Error('Unauthorized')
     }
