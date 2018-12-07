@@ -2,9 +2,9 @@ import React from 'react'
 
 const Showcase = ({ children }) => (
   <ul>
-    {children.map(({ title, quote }) => (
+    {children.map(({ name, quote }) => (
       <li>
-        {`${title} - (${quote})`}
+        {`${name} - (${quote})`}
       </li>
     ))}
   </ul>

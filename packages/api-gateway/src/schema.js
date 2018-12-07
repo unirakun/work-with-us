@@ -1,5 +1,10 @@
 import { makeExecutableSchema } from 'graphql-tools'
+<<<<<<< HEAD
 import { cv } from '@work-with-us/data'
+=======
+import makeProposals from '@work-with-us/api-proposals'
+import { cv, showcase } from '@work-with-us/data'
+>>>>>>> schema
 import logger from '@work-with-us/logger'
 import typeDefs from './types'
 import schemaDirectives from './directives'
@@ -7,6 +12,10 @@ import schemaDirectives from './directives'
 export default () => {
   const resolvers = {
     Query: {
+      showcase: async (root, { clientName }) => {
+        if (clientName) return { ...showcase, clientQuotes: [showcase.clientQuotes.find(c => c.name.toLowerCase() === clientName.toLowerCase())] }
+        return showcase
+      },
       cvs: (parent, { name }) => {
         if (!name) return Object.values(cv)
 

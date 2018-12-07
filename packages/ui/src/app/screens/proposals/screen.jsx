@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import Proposals from './proposals.container'
+import Showcase from './showcase'
 import Add from './add'
 
 const ProposalScreen = ({ className }) => (
@@ -12,6 +13,7 @@ const ProposalScreen = ({ className }) => (
       <NavLink to="/guillaume">Guillaume</NavLink>
     </div>
     <Proposals />
+    <Showcase />
     <Add />
   </div>
 )

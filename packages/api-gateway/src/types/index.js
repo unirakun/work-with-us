@@ -4,6 +4,7 @@ import directives from './directives'
 import contact from './contact'
 import proposal from './proposal'
 import user from './user'
+import showcase from './showcase'
 
 export default gql`
   ${cv}
@@ -15,10 +16,13 @@ export default gql`
 
   ${user}
 
+  ${showcase}
+
   type Query {
     proposals: [Proposal] @auth(requires: ADMIN) @api(name: "proposals")
     cvs(name: String): [CV]!
     users: [User] @auth(requires: ADMIN) @api(name: "users")
+    showcase(clientName: String): Showcase
   }
 
   type Mutation {
