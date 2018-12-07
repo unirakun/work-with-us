@@ -5,6 +5,6 @@ const cv = `{
   experiences: [Experience]
 }`
 
-module.exports = `
+export default `
   type CV ${cv}
 `

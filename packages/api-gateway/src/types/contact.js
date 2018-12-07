@@ -3,7 +3,7 @@ const contact = `{
   name: String
 }`
 
-module.exports = `
+export default `
   type Contact ${contact}
   input InputContact ${contact}
 `

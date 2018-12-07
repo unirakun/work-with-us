@@ -1,16 +1,19 @@
-const path = require('path')
-const Koa = require('koa')
-const serve = require('koa-static')
-const compress = require('koa-compress')
-const conditional = require('koa-conditional-get')
-const etag = require('koa-etag')
-const { closeAll } = require('@work-with-us/storage')
-const logger = require('@work-with-us/logger')
-const GraphQL = require('./graphql')
+import path from 'path'
+import Koa from 'koa'
+import serve from 'koa-static'
+import compress from 'koa-compress'
+import conditional from 'koa-conditional-get'
+import etag from 'koa-etag'
+import { closeAll } from '@work-with-us/storage'
+import logger from '@work-with-us/logger'
+import { authenticateWithKoa } from '@work-with-us/api-auth'
+import GraphQL from './graphql'
 
 const app = new Koa()
 const graphql = GraphQL(app)
 const staticPath = path.resolve(__dirname, '../../ui/build')
+
+authenticateWithKoa(app)
 
 app.use(conditional())
 app.use(etag())
@@ -77,7 +80,7 @@ app.use(async (ctx, next) => {
 })
 
 app.use(async (ctx, next) => {
-  const react = require('./react') // eslint-disable-line global-require
+  const react = require('./react').default // eslint-disable-line global-require
   return react(ctx, next)
 })
 

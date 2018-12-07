@@ -14,6 +14,7 @@ import path from 'path'
 import fs from 'fs'
 import createSchema from './schema'
 import cache from './cache'
+import makeContext from './makeContext'
 
 let htmlData
 let htmlDataPromise
@@ -29,7 +30,7 @@ const loadHtmlData = () => {
 const renderCache = cache({ name: 'render-cache', log: logger.debug })
 let schema
 
-module.exports = async (ctx, next) => {
+export default async (ctx, next) => {
   const cachedItem = renderCache.get(ctx.path)
   if (cachedItem) {
     ctx.body = cachedItem
@@ -48,7 +49,7 @@ module.exports = async (ctx, next) => {
 
   const client = new ApolloClient({
     ssrMode: true,
-    link: new SchemaLink({ schema }),
+    link: new SchemaLink({ schema, context: makeContext }),
     cache: new InMemoryCache(),
   })
 

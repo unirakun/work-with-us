@@ -11,7 +11,7 @@ const proposal = (isInput) => {
   }`
 }
 
-module.exports = `
+export default `
   type Proposal ${proposal(false)}
   input InputProposal ${proposal(true)}
 `

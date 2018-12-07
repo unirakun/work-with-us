@@ -1,20 +1,27 @@
-const { gql } = require('apollo-server')
-const contact = require('./contact')
-const proposal = require('./proposal')
-const cv = require('./cv')
+import { gql } from 'apollo-server'
+import cv from './cv'
+import directives from './directives'
+import contact from './contact'
+import proposal from './proposal'
+import user from './user'
 
-module.exports = gql`
+export default gql`
+  ${cv}
+
+  ${directives}
+
   ${contact}
   ${proposal}
 
-  ${cv}
+  ${user}
 
   type Query {
-    proposals: [Proposal]
+    proposals: [Proposal] @auth(requires: ADMIN) @api(name: "proposals")
     cvs(name: String): [CV]!
+    users: [User] @auth(requires: ADMIN) @api(name: "users")
   }
 
   type Mutation {
-    addProposal(input: InputProposal!): Boolean
+    addProposal(input: InputProposal!): Boolean @api(name: "proposals")
   }
 `

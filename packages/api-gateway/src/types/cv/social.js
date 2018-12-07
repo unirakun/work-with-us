@@ -3,6 +3,6 @@ const social = `{
   url: String!
 }`
 
-module.exports = `
+export default `
   type Social ${social}
 `
