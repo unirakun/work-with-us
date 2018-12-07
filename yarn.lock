@@ -5167,6 +5167,11 @@ grant@4.2.0, grant@^4.2.0:
     request-compose "^1.0.0"
     request-oauth "0.0.3"
 
+graphql-directives-middlewares@0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/graphql-directives-middlewares/-/graphql-directives-middlewares-0.1.0.tgz#cbd361927615e1e0db1f89352b5bea4e25b83dc7"
+  integrity sha512-85ZTdF/xvSVaIs27Xc58Wd28ELlteR6j5vNSrFzOK09kFUYtZM26EnCt4BEp9UPQjHrwVAQhnGUaD6C3dNbhuA==
+
 graphql-extensions@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/graphql-extensions/-/graphql-extensions-0.3.0.tgz#49e3a77986e34d0dc0af0c07fc51e48dcdec8b0c"
