@@ -1,17 +1,20 @@
 import React from 'react'
 
-const Showcase = ({ children }) => (
-  <ul>
-    {children.map(({ name, quote }) => (
-      <li>
-        {`${name} - (${quote})`}
-      </li>
-    ))}
-  </ul>
-)
+const Showcase = ({ children }) => {
+  const { clientQuotes = [] } = children
+  return (
+    <ul>
+      {clientQuotes.map(({ name, quote }) => (
+        <li key={name}>
+          {`${name} - (${quote})`}
+        </li>
+      ))}
+    </ul>
+  )
+}
 
 Showcase.defaultProps = {
-  children: [],
+  children: {},
 }
 
 export default Showcase

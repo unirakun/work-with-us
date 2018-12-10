@@ -1,10 +1,5 @@
 import { makeExecutableSchema } from 'graphql-tools'
-<<<<<<< HEAD
-import { cv } from '@work-with-us/data'
-=======
-import makeProposals from '@work-with-us/api-proposals'
 import { cv, showcase } from '@work-with-us/data'
->>>>>>> schema
 import logger from '@work-with-us/logger'
 import typeDefs from './types'
 import schemaDirectives from './directives'

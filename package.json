@@ -8,7 +8,7 @@
     "lint": "eslint --ext js,jsx --cache packages/** --ignore-pattern node_modules --ignore-pattern build --ignore-pattern public --ignore-pattern dist",
     "start": "run-p start:api",
     "start:api": "yarn --cwd packages/api-gateway start",
-    "start:dev": "run-p start:dev:*",
+    "start:dev": ". ./env.sh && run-p start:dev:*",
     "start:dev:api": "yarn --cwd packages/api-gateway start:dev",
     "start:dev:ui": "BROWSER=none yarn --cwd packages/ui start",
     "build": "run-p build:*",
