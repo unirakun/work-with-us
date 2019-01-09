@@ -16,7 +16,6 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.0.0",
     "@work-with-us/api-auth": "^1.0.0",
-    "@work-with-us/api-proposals": "^1.0.0",
     "@work-with-us/api-users": "^1.0.0",
     "@work-with-us/data": "^1.0.0",
     "@work-with-us/logger": "^1.0.0",

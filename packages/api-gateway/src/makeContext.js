@@ -1,11 +1,9 @@
 import makeAuth from '@work-with-us/api-auth'
 import makeUsers from '@work-with-us/api-users'
-import makeProposals from '@work-with-us/api-proposals'
 
 export default () => {
   const models = {
     auth: makeAuth(),
-    proposals: makeProposals(),
     users: makeUsers(),
   }
 
