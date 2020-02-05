@@ -1,6 +1,6 @@
 # work-with-us
 
-> alakarteio CV
+> uni rakun CV
 
 This is a project done for two purposes:
  - Testing Apollo Stack with SSR
@@ -34,10 +34,10 @@ This is convenient to only have one Docker image to deploy.
  - `yarn build`
  - `yarn pdf`
 
-# About ![alakarteio](http://alakarte.io/assets/img/logo.markdown.png)
-**alakarteio** is created by two passionate french developers.
+# About uni rakun
+**uni rakun** is created by two passionate french developers.
 
-Do you want to contact them? Go to their [website](http://alakarte.io)
+Do you want to contact them? Go to their [website](https://unirakun.fr)
 
 <table border="0">
  <tr>
