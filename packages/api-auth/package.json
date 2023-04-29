@@ -12,7 +12,7 @@
     "got": "^9.3.2",
     "grant": "^4.2.0",
     "grant-koa": "^4.2.0",
-    "jsonwebtoken": "^8.4.0",
+    "jsonwebtoken": "^9.0.0",
     "koa-mount": "^4.0.0",
     "koa-qs": "^2.0.0",
     "koa-session": "^5.10.0"
